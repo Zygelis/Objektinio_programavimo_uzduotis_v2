@@ -31,26 +31,12 @@ int main()
         laikinas.paz.clear();
     }
 
-    
-    for (auto &studentas : grupe) {
-        cout << endl;
-        cout << "Vardas: " << studentas.vardas << endl;
-        cout << "Pavarde: " << studentas.pavarde << endl;
-        cout << "Pazymiai: ";
-        for (int pazymys : studentas.paz) {
-            std::cout << pazymys << " ";
-        }
-        cout << endl;
-        cout << "Egzaminas: " << studentas.egz << endl;
-        cout << "Galutinis rezultatas: " << std::fixed << std::setprecision(2) << studentas.rez << endl;
-    }
-
     for (auto &studentas : grupe)
     {
         cout << studentas.vardas << "  " << studentas.pavarde << "  Semestro pazymiai: ";
         for (auto &pazymys : studentas.paz)
             cout << pazymys << " ";
-        cout << "  Egzamino rezultatas: " << studentas.egz;
+        cout << " Egzamino rezultatas: " << studentas.egz;
         cout << "  Galutinis rezultatas: " << std::fixed << std::setprecision(2) << studentas.rez << endl;
     }
 }
