@@ -3,6 +3,7 @@
 #include <vector>
 #include <numeric>
 #include <iomanip>
+#include <algorithm>
 
 using std::cout; 
 using std::string;
@@ -16,3 +17,5 @@ struct studentas {
   int egz;
   float rez;
 };
+
+double medianos_skaiciavimas(vector<int> vec);
