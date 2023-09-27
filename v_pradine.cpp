@@ -12,18 +12,25 @@ int main()
     {
         cout << "Iveskite varda ir pavarde:";
         cin >> laikinas.vardas >> laikinas.pavarde;
-        cout << "Kiek paz. turi studentas? ";
-        int n;
-        cin >> n;
-        for (int i = 0; i < n; i++)
+
+        cout << "Iveskite pazymius viena po kito ir paspauskite Enter, kai baigsite. Arba iveskite 'baigti' kai baigsite pazymiu ivedima." << endl;
+        string input;
+        cin.ignore();
+        while (true)
         {
-            int k;
-            cout << "Iveskite " << i + 1 << " pazymi: ";
-            cin >> k;
+            getline(cin, input);
+            if (input == "baigti" || input.empty() == true)
+            {
+                break;
+            }
+            int k = stoi(input);
             laikinas.paz.push_back(k);
         }
+
         cout << "Iveskite egzamina: ";
         cin >> laikinas.egz;
+        cin.ignore();
+
         double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
         laikinas.rez = 0.4 * mean + 0.6 * laikinas.egz;
 
