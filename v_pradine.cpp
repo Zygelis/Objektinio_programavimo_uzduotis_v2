@@ -7,14 +7,28 @@ int main()
     cout << "Kiek studentu norite ivesti?";
     int n;
     cin >> n;
+    if (n < 1)
+    {
+        cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
+        return 0;
+    }
 
-    char choice;
+    char vm_pasirinkimas;
     cout << "Skaiciuoti galutini bala vidurkiu (v) arba mediana (m)? ";
-    cin >> choice;
-    if (choice != 'v' && choice != 'm')
+    cin >> vm_pasirinkimas;
+    if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm')
     {
         cout << "Neteisinga pasirinkimo reiksme. Naudojamas vidurkis." << endl;
-        choice = 'v';
+        vm_pasirinkimas = 'v';
+    }
+
+    char ivesties_pasirinkimas;
+    cout << "Ar norite kad pazymiai ir egzamino rezultatas butu sugeneruoti atsitiktinai? (t/n) ";
+    cin >> ivesties_pasirinkimas;
+    if (ivesties_pasirinkimas != 't' && ivesties_pasirinkimas != 'n')
+    {
+        cout << "Neteisinga pasirinkimo reiksme. Pazymiai ir egzamino rezultatas nebus sugeneruoti." << endl;
+        ivesties_pasirinkimas = 'n';
     }
 
     for (int j = 0; j < n; j++)
@@ -22,87 +36,107 @@ int main()
         cout << "Iveskite varda ir pavarde:";
         cin >> laikinas.vardas >> laikinas.pavarde;
 
-        cout << "Iveskite pazymius viena po kito ir paspauskite Enter, kai baigsite. Arba iveskite 'baigti' kai baigsite pazymiu ivedima." << endl;
-        string input;
-        cin.ignore();
-        while (true)
+        // jei pasirinkimas yra 't', pazymiai ir egzamino rezultatas sugeneruojami atsitiktinai
+        if (ivesties_pasirinkimas == 't')
         {
-            getline(cin, input);
+            laikinas.paz = random_skaicius(5);
+            laikinas.egz = random_skaicius(1)[0];
 
-            if (input == "baigti" || input.empty())
+            cout << "Sugeneruoti pazymiai: ";
+            for (auto &a : laikinas.paz)
             {
-                break;
+                cout << a << " ";
             }
+            cout << endl;
 
-            try
-            {
-                int grade = std::stoi(input);
-
-                if (grade < 0 || grade > 10)
-                {
-                    cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << std::endl;
-                    continue;
-                }
-                laikinas.paz.push_back(grade);
-            }
-            catch (const std::invalid_argument &)
-            {
-                cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << std::endl;
-            }
-            catch (const std::out_of_range &)
-            {
-                cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
-            }
+            cout << "Sugeneruotas egzamino rezultatas: " << laikinas.egz << endl;
         }
-
-        // spausdinami ivesti pazymiai
-        cout << "Ivedei pazymius: ";
-        for (auto &a : laikinas.paz)
-            cout << a << " ";
-        cout << endl;
-
-        // ivedamas egzamino rezultatas
-        while (true)
+        // jei ne, ranka ivedami pazymiai ir egzamino rezultatas
+        else
         {
-            cout << "Iveskite egzamino rezultata: ";
-            string egzrez_laikinas;
-            cin >> egzrez_laikinas;
-
-            try
+            cout << "Iveskite pazymius viena po kito ir paspauskite Enter, kai baigsite. Arba iveskite 'baigti' kai baigsite pazymiu ivedima." << endl;
+            string paz_tikrinimas;
+            cin.ignore();
+            while (true)
             {
-                int input = std::stoi(egzrez_laikinas);
+                getline(cin, paz_tikrinimas);
 
-                if (input < 1 || input > 10)
+                if (paz_tikrinimas == "baigti" || paz_tikrinimas.empty())
                 {
-                    cout << "Egzamino rezultatas turi buti tarp 1 ir 10: " << endl;
-                }
-                else
-                {
-                    laikinas.egz = input;
                     break;
                 }
+
+                try
+                {
+                    int input = std::stoi(paz_tikrinimas);
+
+                    if (input < 0 || input > 10)
+                    {
+                        cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << std::endl;
+                        continue;
+                    }
+                    laikinas.paz.push_back(input);
+                }
+                catch (const std::invalid_argument &)
+                {
+                    cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << std::endl;
+                }
+                catch (const std::out_of_range &)
+                {
+                    cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+                }
             }
-            catch (const std::invalid_argument &)
+
+            // spausdinami ivesti pazymiai
+            cout << "Ivedei pazymius: ";
+            for (auto &a : laikinas.paz)
+                cout << a << " ";
+            cout << endl;
+
+            // ivedamas egzamino rezultatas
+            while (true)
             {
-                // jei ivestis yra ne skaicius, prasoma ivesti is naujo
-                cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << endl;
+                cout << "Iveskite egzamino rezultata: ";
+                string egzrez_laikinas;
+                cin >> egzrez_laikinas;
+
+                try
+                {
+                    int input = std::stoi(egzrez_laikinas);
+
+                    if (input < 1 || input > 10)
+                    {
+                        cout << "Egzamino rezultatas turi buti tarp 1 ir 10: " << endl;
+                    }
+                    else
+                    {
+                        laikinas.egz = input;
+                        break;
+                    }
+                }
+                catch (const std::invalid_argument &)
+                {
+                    // jei ivestis yra ne skaicius, prasoma ivesti is naujo
+                    cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << endl;
+                }
+                catch (const std::out_of_range &)
+                {
+                    cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+                }
             }
-            catch (const std::out_of_range &)
-            {
-                cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
-            }
+
+            cout << "Ivedei egzamina: " << laikinas.egz << endl;
+            cin.ignore();
         }
 
-        cout << "Ivedei egzamina: " << laikinas.egz << endl;
-        cin.ignore();
-
-        if (choice == 'v')
+        // skaiciuojamas galutinis balas
+        if (vm_pasirinkimas == 'v')
         {
             // skaičiuojama pagal vidurki
             double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
             laikinas.rez = 0.4 * mean + 0.6 * laikinas.egz;
         }
-        else if (choice == 'm')
+        else if (vm_pasirinkimas == 'm')
         {
             // skaičiuojama pagal mediana
             laikinas.rez = 0.4 * medianos_skaiciavimas(laikinas.paz) + 0.6 * laikinas.egz;
@@ -123,7 +157,7 @@ int main()
     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
 
     // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
-    if (choice == 'm')
+    if (vm_pasirinkimas == 'm')
     {
         printf("|--------------------|--------------------|--------------------|\n");
         for (auto &a : grupe)
