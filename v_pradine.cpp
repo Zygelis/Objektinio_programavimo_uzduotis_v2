@@ -43,6 +43,7 @@ int main()
             cout << "Kadangi pasirinkote ivedima ranka." << endl;
         if (ivedimo_pasirinkimas == 3)
             cout << "Kadangi pasirinkote sugeneravima atsitiktinai." << endl;
+
         cout << "Keliu studentu galutini bala norite suskaiciuoti ? ";
         cin >> n;
         if (n < 1)
@@ -81,17 +82,25 @@ int main()
     char surusiuoti;
     cin >> surusiuoti;
 
-    try {
-        if (surusiuoti == 't' || surusiuoti == 'T') {
+    try
+    {
+        if (surusiuoti == 't' || surusiuoti == 'T')
+        {
             sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
-            cout << "Sarasa surusiuotas pagal varda." << std::endl;
-        } else if (surusiuoti == 'n' || surusiuoti == 'N') {
-            cout << "Nesurusiuojama." << std::endl;
-        } else {
-            throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'.");
+            cout << "Sarasa surusiuotas pagal varda." << endl;
         }
-    } catch (const std::exception& e) {
-        std::cerr << "Ivedimo klaida: " << e.what() << std::endl;
+        else if (surusiuoti == 'n' || surusiuoti == 'N')
+        {
+            cout << "Nesurusiuojama." << endl;
+        }
+        else
+        {
+            throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'. Automatiškai nesurusiuojama.");
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Ivedimo klaida: " << e.what() << endl;
     }
 
     // spausdinama lentele
