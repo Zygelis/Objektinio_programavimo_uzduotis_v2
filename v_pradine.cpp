@@ -1,4 +1,5 @@
 #include "my_lib.h"
+#include "deklaravimai.h"
 
 int main()
 {
@@ -74,10 +75,7 @@ int main()
         }
     }
 
-    // surusiuojama pagal varda
-    // SITOJE VERSIJOJE NERUSIUOJAMA NES TADA LABAI ISSIMETO DUOMENYS LENTELEJE, KADANGI VARDAI YRA VARDAS1 VARDAS2 VARDAS3 IR T.T.
-    //std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
-
+    // surusiuojama pagal varda jei taip pasirinkta
     cout << "Ar norite surusiuoti pagal varda? (t/n)" << std::endl;
     char surusiuoti;
     cin >> surusiuoti;
@@ -92,11 +90,9 @@ int main()
             throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'.");
         }
     } catch (const std::exception& e) {
-        std::cerr << "Ivedimo klaida " << e.what() << std::endl;
+        std::cerr << "Ivedimo klaida: " << e.what() << std::endl;
     }
 
-    
-    
     // spausdinama lentele
     if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
     {

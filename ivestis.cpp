@@ -1,4 +1,5 @@
 #include "my_lib.h"
+#include "deklaravimai.h"
 
 void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas)
 {

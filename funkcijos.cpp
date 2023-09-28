@@ -1,4 +1,5 @@
 #include "my_lib.h"
+#include "deklaravimai.h"
 
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b) {
     return a.vardas < b.vardas;
@@ -8,13 +9,19 @@ double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas& laikinas){
     if (vm_pasirinkimas == 'v' || vm_pasirinkimas == 'V')
     {  
         if (laikinas.paz.empty()) {
-        throw std::runtime_error("Tuscias pazymiu vektorius.");
-    }   // skaičiuojama pagal vidurki
+        cout << "Tuscias pazymiu vektorius. Todel galinis rezultatas 0" << endl;
+        return 0;
+        }   
+        // skaičiuojama pagal vidurki
         double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
         return 0.4 * mean + 0.6 * laikinas.egz;
     }
     else if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
-    {
+    {   
+        if (laikinas.paz.empty()) {
+        cout << "Tuscias pazymiu vektorius. Todel galinis rezultatas 0" << endl;
+        return 0;
+        }
         // skaičiuojama pagal mediana
         return 0.4 * medianos_skaiciavimas(laikinas.paz) + 0.6 * laikinas.egz;
     }
