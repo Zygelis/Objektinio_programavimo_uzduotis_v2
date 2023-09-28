@@ -4,6 +4,26 @@ bool palyginimas_pagal_varda(const studentas &a, const studentas &b) {
     return a.vardas < b.vardas;
 }
 
+double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas& laikinas){
+    if (vm_pasirinkimas == 'v' || vm_pasirinkimas == 'V')
+    {
+        // skaičiuojama pagal vidurki
+        double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
+        return 0.4 * mean + 0.6 * laikinas.egz;
+    }
+    else if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
+    {
+        // skaičiuojama pagal mediana
+        return 0.4 * medianos_skaiciavimas(laikinas.paz) + 0.6 * laikinas.egz;
+    }
+    else
+    {
+        // jei pasirinkimas neteisingas, naudojamas vidurkis
+        cout << "Neteisinga pasirinkimo reiksme. Naudojamas vidurkis." << endl;
+        double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
+        return 0.4 * mean + 0.6 * laikinas.egz;
+    }
+}
 
 double medianos_skaiciavimas(vector<int> vektorius)
 {
