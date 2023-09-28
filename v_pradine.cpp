@@ -39,7 +39,10 @@ int main()
         // jei pasirinkimas yra 't', pazymiai ir egzamino rezultatas sugeneruojami atsitiktinai
         if (ivesties_pasirinkimas == 't')
         {
-            laikinas.paz = random_skaicius(5);
+            cout << "Kiek pazymiu norite sugeneruoti? ";
+            int kiek_pazymiu;
+            cin >> kiek_pazymiu;
+            laikinas.paz = random_skaicius(kiek_pazymiu);
             laikinas.egz = random_skaicius(1)[0];
 
             cout << "Sugeneruoti pazymiai: ";
