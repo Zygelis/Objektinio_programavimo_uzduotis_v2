@@ -156,9 +156,10 @@ int main()
         laikinas.paz.clear();
     }
 
+    // surusiuojama pagal varda
+    std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
     // spausdinama lentele
     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
-
     // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
     if (vm_pasirinkimas == 'm')
     {

@@ -1,5 +1,10 @@
 #include "my_lib.h"
 
+bool palyginimas_pagal_varda(const studentas &a, const studentas &b) {
+    return a.vardas < b.vardas;
+}
+
+
 double medianos_skaiciavimas(vector<int> vektorius)
 {
     int vektoriaus_ilgis = vektorius.size();

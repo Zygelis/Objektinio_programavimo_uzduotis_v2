@@ -20,3 +20,4 @@ struct studentas {
 
 double medianos_skaiciavimas(vector<int> vec);
 vector<int> random_skaicius(int n);
+bool palyginimas_pagal_varda(const studentas &a, const studentas &b);
