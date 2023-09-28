@@ -28,6 +28,7 @@ int main()
     cin >> vm_pasirinkimas;
     if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm' && vm_pasirinkimas != 'V' && vm_pasirinkimas != 'M')
     {
+        // jei pasirinkimas neteisingas, automatiskai naudojamas vidurkis
         cout << "Neteisinga pasirinkimo reiksme. Automatiskai naudojamas vidurkis." << endl;
         vm_pasirinkimas = 'v';
     }

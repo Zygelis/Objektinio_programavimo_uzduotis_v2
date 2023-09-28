@@ -23,12 +23,12 @@ void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas)
 
         std::istringstream iss(eilute); // pasiverciame eilute i srauta is kurio galima skaityti lengviau
         // 
-        iss >> laikinas.vardas >> laikinas.pavarde; // skaitome varda ir pavarde
+        iss >> laikinas.vardas >> laikinas.pavarde;
 
         int pazymiai;
         // Read scores
         while (iss >> pazymiai) { // kol yra skaiciu tol skaitome
-            laikinas.paz.push_back(pazymiai); // skaitome pazymius
+            laikinas.paz.push_back(pazymiai);
         }
         // egzamino rezultatas yra paskutinis skaicius prie pazymiu
         laikinas.egz = laikinas.paz.back();
@@ -53,6 +53,7 @@ studentas atsitiktinis_ivedimas()
     int kiek_pazymiu;
     cin >> kiek_pazymiu;
 
+    // sugeneruojami pazymiai
     laikinas.paz = random_skaicius(kiek_pazymiu);
     laikinas.egz = random_skaicius(1)[0];
 
