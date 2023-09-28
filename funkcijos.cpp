@@ -6,8 +6,10 @@ bool palyginimas_pagal_varda(const studentas &a, const studentas &b) {
 
 double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas& laikinas){
     if (vm_pasirinkimas == 'v' || vm_pasirinkimas == 'V')
-    {
-        // skaičiuojama pagal vidurki
+    {  
+        if (laikinas.paz.empty()) {
+        throw std::runtime_error("Tuscias pazymiu vektorius.");
+    }   // skaičiuojama pagal vidurki
         double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
         return 0.4 * mean + 0.6 * laikinas.egz;
     }

@@ -7,59 +7,79 @@ int main()
     char vm_pasirinkimas;
     int n;
 
+    cout << "Pasirinkite ivedimo buda: " << endl;
+    cout << "1 - ivedimas is failo" << endl;
+    cout << "2 - ivedimas ranka" << endl;
+    cout << "3 - sugeneravimas atsitiktinai" << endl;
+    int ivedimo_pasirinkimas;
+    cin >> ivedimo_pasirinkimas;
+    // jei pasirinkimas neteisingas, ivedimas kartojamas
+    while (ivedimo_pasirinkimas != 1 && ivedimo_pasirinkimas != 2 && ivedimo_pasirinkimas != 3)
+    {
+        cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
+        cout << "1 - ivedimas is failo" << endl;
+        cout << "2 - ivedimas ranka" << endl;
+        cout << "3 - sugeneravimas atsitiktinai" << endl;
+        cin >> ivedimo_pasirinkimas;
+    }
+
     cout << "Skaiciuoti galutini bala vidurkiu (v) arba mediana (m)? ";
     cin >> vm_pasirinkimas;
     if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm' && vm_pasirinkimas != 'V' && vm_pasirinkimas != 'M')
     {
-        cout << "Neteisinga pasirinkimo reiksme. Naudojamas vidurkis." << endl;
+        cout << "Neteisinga pasirinkimo reiksme. Automatiskai naudojamas vidurkis." << endl;
         vm_pasirinkimas = 'v';
     }
 
-    cout << "Kiek studentu norite ivesti? ";
-    cin >> n;
-    if (n < 1)
+    if (ivedimo_pasirinkimas == 1)
     {
-        cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
-        return 0;
+        ivedimas_is_file(grupe, vm_pasirinkimas);
     }
-
-    for (int j = 0; j < n; j++)
+    else
     {
-        cout << (j + 1) << "-ojo studento pazymius ir egzamina ivesite patys (p) ar norite sugeneruoti atsitiktinai (a)? ";
-        char ivesties_pasirinkimas;
-        cin >> ivesties_pasirinkimas;
-        // jei pasirinkimas neteisingas, ivedimas kartojamas
-        while (ivesties_pasirinkimas != 'p' && ivesties_pasirinkimas != 'a' && ivesties_pasirinkimas != 'P' && ivesties_pasirinkimas != 'A') 
+        if (ivedimo_pasirinkimas == 2)
+            cout << "Kadangi pasirinkote ivedima ranka." << endl;
+        if (ivedimo_pasirinkimas == 3)
+            cout << "Kadangi pasirinkote sugeneravima atsitiktinai." << endl;
+        cout << "Keliu studentu galutini bala norite suskaiciuoti ? ";
+        cin >> n;
+        if (n < 1)
         {
-            cout << "Neteisinga pasirinkimo reiksme. Iveskite p arba a." << endl;
-            cin >> ivesties_pasirinkimas;
+            cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
+            return 0;
         }
-        if (ivesties_pasirinkimas == 'p' || ivesties_pasirinkimas == 'P')
+
+        for (int j = 0; j < n; j++)
         {
-            // ivedama ranka
-            laikinas = rankinis_ivedimas();
-            // skaiciuojamas galutinis balas
-            laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
-            grupe.push_back(laikinas);
-            laikinas.paz.clear();
-            continue;
-        }
-        else
-        {
-            // sugeneruojama atsitiktinai
-            laikinas = atsitiktinis_ivedimas();
-            // skaiciuojamas galutinis balas
-            laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
-            grupe.push_back(laikinas);
-            laikinas.paz.clear();
-            continue;
+            if (ivedimo_pasirinkimas == 2)
+            {
+                // ivedama ranka
+                laikinas = rankinis_ivedimas();
+                // skaiciuojamas galutinis balas
+                laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
+                grupe.push_back(laikinas);
+                laikinas.paz.clear();
+                continue;
+            }
+            else
+            {
+                // sugeneruojama atsitiktinai
+                laikinas = atsitiktinis_ivedimas();
+                // skaiciuojamas galutinis balas
+                laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
+                grupe.push_back(laikinas);
+                laikinas.paz.clear();
+                continue;
+            }
         }
     }
 
     // surusiuojama pagal varda
-    std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+    // SITOJE VERSIJOJE NERUSIUOJAMA NES TADA LABAI ISSIMETO DUOMENYS LENTELEJE, KADANGI VARDAI YRA VARDAS1 VARDAS2 VARDAS3 IR T.T.
+    //std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+    
     // spausdinama lentele
-    if (vm_pasirinkimas == 'm')
+    if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
     {
         printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
     }

@@ -1,5 +1,47 @@
 #include "my_lib.h"
 
+void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas)
+{
+    std::ifstream duomenys("Studentai50.txt");
+
+    if (!duomenys.is_open()) {
+        cout << "Neatsidare duomenys " << endl;
+    }
+
+    string pirma_eilute;
+    getline(duomenys, pirma_eilute);
+    cin.ignore();
+
+    string eilute;
+    while (getline(duomenys, eilute)) {// kol nera pasiekta failo pabaiga skaitome po eilute
+        studentas laikinas;
+
+        if (eilute.empty() || std::all_of(eilute.begin(), eilute.end(), ::isspace)) {
+        continue;
+        }
+
+        std::istringstream iss(eilute); // pasiverciame eilute i srauta is kurio galima skaityti lengviau
+        // 
+        iss >> laikinas.vardas >> laikinas.pavarde; // skaitome varda ir pavarde
+
+        int pazymiai;
+        // Read scores
+        while (iss >> pazymiai) { // kol yra skaiciu tol skaitome
+            laikinas.paz.push_back(pazymiai); // skaitome pazymius
+        }
+        // egzamino rezultatas yra paskutinis skaicius prie pazymiu
+        laikinas.egz = laikinas.paz.back();
+        laikinas.paz.pop_back(); // pasaliname egzamino rezultata is pazymiu vektoriaus
+        // skaiciuojamas galutinis balas
+        laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
+
+        grupe.push_back(laikinas); // Add the student to the vector
+    }
+
+    duomenys.close();
+}
+
+
 studentas atsitiktinis_ivedimas()
 {
     studentas laikinas;
