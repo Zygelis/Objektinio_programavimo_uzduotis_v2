@@ -7,6 +7,7 @@ struct studentas {
     double rez;
 };
 
+void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
 void duomenu_kurimas(int numLines);
 double medianos_skaiciavimas(vector<int> vec);
 vector<int> random_skaicius(int n);

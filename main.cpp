@@ -125,46 +125,49 @@ int main()
         }
     }
 
-    // surusiuojama pagal varda jei taip pasirinkta
-    cout << "Ar norite surusiuoti pagal varda? (t/n)" << std::endl;
-    char surusiuoti;
-    cin >> surusiuoti;
+    // // surusiuojama pagal varda jei taip pasirinkta
+    // cout << "Ar norite surusiuoti pagal varda? (t/n)" << std::endl;
+    // char surusiuoti;
+    // cin >> surusiuoti;
 
-    try
-    {
-        if (surusiuoti == 't' || surusiuoti == 'T')
-        {
-            sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
-            cout << "Sarasa surusiuotas pagal varda." << endl;
-        }
-        else if (surusiuoti == 'n' || surusiuoti == 'N')
-        {
-            cout << "Nesurusiuojama." << endl;
-        }
-        else
-        {
-            throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'. Automatiškai nesurusiuojama.");
-        }
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << "Ivedimo klaida: " << e.what() << endl;
-    }
+    // try
+    // {
+    //     if (surusiuoti == 't' || surusiuoti == 'T')
+    //     {
+    //         sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+    //         cout << "Sarasa surusiuotas pagal varda." << endl;
+    //     }
+    //     else if (surusiuoti == 'n' || surusiuoti == 'N')
+    //     {
+    //         cout << "Nesurusiuojama." << endl;
+    //     }
+    //     else
+    //     {
+    //         throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'. Automatiškai nesurusiuojama.");
+    //     }
+    // }
+    // catch (const std::exception &e)
+    // {
+    //     std::cerr << "Ivedimo klaida: " << e.what() << endl;
+    // }
 
 
-    // spausdinama lentele
-    if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
-    {
-        printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
-    }
-    else
-    {
-        printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Vid.)");
-    }
-    // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
-    printf("|--------------------|--------------------|--------------------|\n");
-    for (auto &a : grupe)
-        printf("|%20s|%20s|%20.2f|\n", a.vardas.c_str(), a.pavarde.c_str(), a.rez); // %20.2f - %20 simboliu plotis, 2f skaiciai po kablelio
-    // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
-    printf("|--------------------|--------------------|--------------------|\n");
+    // // spausdinama lentele
+    // if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
+    // {
+    //     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
+    // }
+    // else
+    // {
+    //     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Vid.)");
+    // }
+    // // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
+    // printf("|--------------------|--------------------|--------------------|\n");
+    // for (auto &a : grupe)
+    //     printf("|%20s|%20s|%20.2f|\n", a.vardas.c_str(), a.pavarde.c_str(), a.rez); // %20.2f - %20 simboliu plotis, 2f skaiciai po kablelio
+    // // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
+    // printf("|--------------------|--------------------|--------------------|\n");
+
+    // issaugojam i file
+    issaugojam_duomenis(grupe, "rezultatai.txt");
 }
