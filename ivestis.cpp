@@ -13,7 +13,7 @@ void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const stri
 
     string pirma_eilute;
     getline(duomenys, pirma_eilute);
-    cin.ignore();
+    //cin.ignore();
 
     string eilute;
     while (getline(duomenys, eilute))

@@ -6,27 +6,43 @@ int main()
     studentas laikinas;
     vector<studentas> grupe;
 
-    vector<studentas> galvočiai;
+    vector<studentas> galvociai;
     vector<studentas> nuskriaustukai;
     char vm_pasirinkimas;
+    int rusiavimo_pasirinkimas;
     int n;
 
+    // Pasirenkama ar skaiciuoti pagal vidurki ar pagal mediana
     cout << "Sveiki. Norite skaiciuoti galutini bala vidurkiu (v) ar mediana (m)? ";
     cin >> vm_pasirinkimas;
     if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm' && vm_pasirinkimas != 'V' && vm_pasirinkimas != 'M')
     {
-        // jei pasirinkimas neteisingas, automatiskai naudojamas vidurkis
         cout << "Neteisinga pasirinkimo reiksme. Automatiskai naudojamas vidurkis." << endl;
         vm_pasirinkimas = 'v';
     }
 
+    // Pasirenkama pagal ka rusiuoti
+    cout << "Pagal ka norite rusiuoti: " << endl;
+    cout << "1 - pagal varda" << endl;
+    cout << "2 - pagal galutini bala" << endl;
+    cin >> rusiavimo_pasirinkimas;
+    
+    while (rusiavimo_pasirinkimas != 1 && rusiavimo_pasirinkimas != 2)
+    {
+        cout << "Neteisinga pasirinkimo reiksme. Iveskite 1 arba 2." << endl;
+        cout << "1 - pagal varda" << endl;
+        cout << "2 - pagal galutini bala" << endl;
+        cin >> rusiavimo_pasirinkimas;
+    }
+
+    // Pasirenkamas ivedimo budas
     cout << "Pasirinkite ivedimo buda: " << endl;
     cout << "1 - ivedimas is failo" << endl;
     cout << "2 - ivedimas ranka" << endl;
     cout << "3 - sugeneravimas atsitiktinai" << endl;
     int ivedimo_pasirinkimas;
     cin >> ivedimo_pasirinkimas;
-    // jei pasirinkimas neteisingas, ivedimas kartojamas
+    
     while (ivedimo_pasirinkimas != 1 && ivedimo_pasirinkimas != 2 && ivedimo_pasirinkimas != 3)
     {
         cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
@@ -48,7 +64,7 @@ int main()
 
         int failo_pasirinkimas;
         cin >> failo_pasirinkimas;
-        // jei pasirinkimas neteisingas, ivedimas kartojamas
+
         while (failo_pasirinkimas != 1 && failo_pasirinkimas != 2 && failo_pasirinkimas != 3 && failo_pasirinkimas != 4 && failo_pasirinkimas != 5)
         {
             cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
@@ -65,45 +81,44 @@ int main()
 
         if (failo_pasirinkimas == 1) {
             duomenu_kurimas(1000);
-            cout << "Failo is 1000 irasu generavimo laikas:";
+            cout << "Failo is 1000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 2) {
             duomenu_kurimas(10000);
-            cout << "Failo is 10000 irasu generavimo laikas:";
+            cout << "Failo is 10000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 3) {
             duomenu_kurimas(100000);
-            cout << "Failo is 100000 irasu generavimo laikas:";
+            cout << "Failo is 100000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 4) {
             duomenu_kurimas(1000000);
-            cout << "Failo is 1000000 irasu generavimo laikas:";
+            cout << "Failo is 1000000 irasu generavimo laikas: ";
         } else {
             duomenu_kurimas(10000000);
-            cout << "Failo is 10000000 irasu generavimo laikas:";
+            cout << "Failo is 10000000 irasu generavimo laikas: ";
         }
 
         auto end_time = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
         cout  << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
-        cout  << duration.count() / 1000 << " seconds" << endl;
 
         // matuojam ivedima is file
         start_time = std::chrono::high_resolution_clock::now();
 
         if (failo_pasirinkimas == 1) {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
-            cout << "Failo is 1000 nuskaitymo laikas:";
+            cout << "Failo is 1000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 2) {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000.txt");
-            cout << "Failo is 10000 nuskaitymo laikas:";
+            cout << "Failo is 10000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 3) {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai100000.txt");
-            cout << "Failo is 100000 nuskaitymo laikas:";
+            cout << "Failo is 100000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 4) {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000000.txt");
-            cout << "Failo is 1000000 nuskaitymo laikas:";
+            cout << "Failo is 1000000 nuskaitymo laikas: ";
         } else {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000000.txt");
-            cout << "Failo is 10000000 nuskaitymo laikas:";
+            cout << "Failo is 10000000 nuskaitymo laikas: ";
         }
 
         end_time = std::chrono::high_resolution_clock::now();
@@ -193,25 +208,38 @@ int main()
     // // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
     // printf("|--------------------|--------------------|--------------------|\n");
 
-    // surusiuojama pagal rezultata
-    auto start_time = std::chrono::high_resolution_clock::now();
-    sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
-    auto end_time = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    if (rusiavimo_pasirinkimas == 1) {
+        // surusiuojama pagal varda
+        auto start_time = std::chrono::high_resolution_clock::now();
+        sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+        auto end_time = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
-    cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+        cout << "Studentu rusiavimas pagal varda uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+    }
+    
+    else {
+        // surusiuojama pagal rezultata
+        auto start_time = std::chrono::high_resolution_clock::now();
+        sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
+        auto end_time = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+        cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+    }
+
 
     // suskirstoma i dvi grupes
-    start_time = std::chrono::high_resolution_clock::now();
-    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvočiai);
-    end_time = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    auto start_time = std::chrono::high_resolution_clock::now();
+    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
     cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
 
     // irasom i file galvocius
     start_time = std::chrono::high_resolution_clock::now();
-    issaugojam_duomenis(galvočiai, "galvociai.txt");
+    issaugojam_duomenis(galvociai, "galvociai.txt");
     end_time = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 

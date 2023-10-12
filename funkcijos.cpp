@@ -33,6 +33,8 @@ void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_
 void duomenu_kurimas(int n_eiluciu) {
     std::ofstream isvesties_file("Studentai" + std::to_string(n_eiluciu) + ".txt");
 
+    srand((unsigned)time(NULL));
+
     // antrastine eilute
     isvesties_file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde";
 
@@ -55,6 +57,70 @@ void duomenu_kurimas(int n_eiluciu) {
     }
 
     isvesties_file.close();
+}
+
+
+void laiko_skaicuokle(int n_eil, int n) {
+    double bendras_laikas_ivedimo = 0.0;
+    double bendras_laikas_rusiavimo = 0.0;
+    double bendras_laika_issaugojimo_galvociai = 0.0;
+    double bendras_laika_issaugojimo_nuskriaustukai = 0.0;
+    
+    studentas laikinas;
+    vector<studentas> grupe;
+    vector<studentas> galvociai;
+    vector<studentas> nuskriaustukai;
+    char vm = 'm';
+    string filename = "Studentai" + std::to_string(n_eil) + ".txt";
+
+    for (int i = 0; i < n; i++) {
+        grupe.clear();
+        galvociai.clear();
+        nuskriaustukai.clear();
+
+        auto laikas_pradzia = std::chrono::high_resolution_clock::now();
+        ivedimas_is_file(grupe, vm, filename);
+        auto laikas_pabaiga = std::chrono::high_resolution_clock::now();
+        auto laikas_ivedimo = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_ivedimo += static_cast<double>(laikas_ivedimo.count());
+
+        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+        laikas_pabaiga = std::chrono::high_resolution_clock::now();
+        auto laikas_rusiavimo = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_rusiavimo += static_cast<double>(laikas_rusiavimo.count());
+
+        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        issaugojam_duomenis(galvociai, "galvociai.txt");
+        laikas_pabaiga = std::chrono::high_resolution_clock::now();
+        auto laikas_issaugojimo_galvociai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laika_issaugojimo_galvociai += static_cast<double>(laikas_issaugojimo_galvociai.count());
+
+        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
+        laikas_pabaiga = std::chrono::high_resolution_clock::now();
+        auto laikas_issaugojimo_nuskriaustukai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laika_issaugojimo_nuskriaustukai += static_cast<double>(laikas_issaugojimo_nuskriaustukai.count());
+    }
+
+    cout << "Skaiciuojamas failo " << filename << " laikas" << endl;
+
+    double vid_bendras_laikas_ivedimo = bendras_laikas_ivedimo / static_cast<double>(n);
+    double vid_bendras_laikas_rusiavimo = bendras_laikas_rusiavimo / static_cast<double>(n);
+    double vid_bendras_laika_issaugojimo_galvociai = bendras_laika_issaugojimo_galvociai / static_cast<double>(n);
+    double vid_bendras_laika_issaugojimo_nuskriaustukai = bendras_laika_issaugojimo_nuskriaustukai / static_cast<double>(n);
+
+    cout << "Vidutinis failo nuskaitymo laikas: " << vid_bendras_laikas_ivedimo << " milliseconds (" << vid_bendras_laikas_ivedimo / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas: " << vid_bendras_laikas_rusiavimo << " milliseconds (" << vid_bendras_laikas_rusiavimo / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis galvociu irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_galvociai << " milliseconds (" << vid_bendras_laika_issaugojimo_galvociai / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis nuskriaustuku irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_nuskriaustukai << " milliseconds (" << vid_bendras_laika_issaugojimo_nuskriaustukai / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis bendras laikas: " << vid_bendras_laikas_ivedimo + vid_bendras_laikas_rusiavimo + vid_bendras_laika_issaugojimo_galvociai + vid_bendras_laika_issaugojimo_nuskriaustukai;
+    cout << " milliseconds (" << (vid_bendras_laikas_ivedimo + vid_bendras_laikas_rusiavimo + vid_bendras_laika_issaugojimo_galvociai + vid_bendras_laika_issaugojimo_nuskriaustukai) / 1000.0 << " seconds)" << endl;
+    cout << endl;
 }
 
 
