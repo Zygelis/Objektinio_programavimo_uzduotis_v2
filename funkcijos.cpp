@@ -1,6 +1,35 @@
 #include "my_lib.h"
 #include "deklaravimai.h"
 
+
+void duomenu_kurimas(int n_eiluciu) {
+    std::ofstream isvesties_file("Studentai" + std::to_string(n_eiluciu) + ".txt");
+
+    // antrastine eilute
+    isvesties_file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde";
+    for (int i = 1; i <= 15; i++) {
+        isvesties_file << std::setw(20) << "ND" + std::to_string(i);
+    }
+    isvesties_file << std::setw(20) << "Egz." << std::endl;
+
+    // generuojami duomenys
+    for (int i = 1; i <= n_eiluciu; i++) {
+        isvesties_file << std::left << std::setw(20) << "Vardas" + std::to_string(i) << std::setw(20) << "Pavarde" + std::to_string(i);
+        srand((unsigned)time(NULL));
+
+        for (int j = 1; j <= 15; j++) {
+            int pazymys = rand() % 10 + 1; 
+            isvesties_file << std::setw(20) << pazymys;
+        }
+
+        int egzaminas = rand() % 10 + 1; 
+        isvesties_file << std::setw(20) << egzaminas << std::endl;
+    }
+
+    isvesties_file.close();
+}
+
+
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b)
 {
     return a.vardas < b.vardas;

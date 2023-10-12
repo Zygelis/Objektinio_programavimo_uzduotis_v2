@@ -37,34 +37,52 @@ int main()
     if (ivedimo_pasirinkimas == 1)
     {
         cout << "Pasirinkite sugeneruota duomenu faila: " << endl;
-        cout << "1 - Studentai50.txt" << endl;
-        cout << "2 - Studentai1000.txt" << endl;
-        cout << "3 - Studentai10000.txt" << endl;
+        cout << "1 - Studentai1000.txt" << endl;
+        cout << "2 - Studentai10000.txt" << endl;
+        cout << "3 - Studentai100000.txt" << endl;
+        cout << "4 - Studentai1000000.txt" << endl;
+        cout << "5 - Studentai10000000.txt" << endl;
 
         int failo_pasirinkimas;
         cin >> failo_pasirinkimas;
         // jei pasirinkimas neteisingas, ivedimas kartojamas
-        while (failo_pasirinkimas != 1 && failo_pasirinkimas != 2 && failo_pasirinkimas != 3)
+        while (failo_pasirinkimas != 1 && failo_pasirinkimas != 2 && failo_pasirinkimas != 3 && failo_pasirinkimas != 4 && failo_pasirinkimas != 5)
         {
             cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
-            cout << "1 - Studentai50.txt" << endl;
-            cout << "2 - Studentai1000.txt" << endl;
-            cout << "3 - Studentai10000.txt" << endl;
+            cout << "1 - Studentai1000.txt" << endl;
+            cout << "2 - Studentai10000.txt" << endl;
+            cout << "3 - Studentai100000.txt" << endl;
+            cout << "4 - Studentai1000000.txt" << endl;
+            cout << "5 - Studentai10000000.txt" << endl;
             cin >> failo_pasirinkimas;
         }
 
         if (failo_pasirinkimas == 1)
         {
-            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai50.txt");
+            duomenu_kurimas(1000);
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
         }
         else if (failo_pasirinkimas == 2)
         {
-            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
+            duomenu_kurimas(10000);
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000.txt");
+        }
+        else if (failo_pasirinkimas == 3)
+        {
+            duomenu_kurimas(100000);
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai100000.txt");
+        }
+        else if (failo_pasirinkimas == 4)
+        {
+            duomenu_kurimas(1000000);
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000000.txt");
         }
         else
         {
-            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000.txt");
+            duomenu_kurimas(10000000);
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000000.txt");
         }
+
     }
 
     else
