@@ -1,13 +1,14 @@
 #include "my_lib.h"
 #include "deklaravimai.h"
 
-void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas)
+void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const string &duom_vard)
 {
-    std::ifstream duomenys("Studentai50.txt");
+    std::ifstream duomenys(duom_vard);
 
     if (!duomenys.is_open())
     {
         cout << "Neatsidare duomenys " << endl;
+        return;
     }
 
     string pirma_eilute;

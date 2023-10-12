@@ -8,6 +8,15 @@ int main()
     char vm_pasirinkimas;
     int n;
 
+    cout << "Sveiki. Norite skaiciuoti galutini bala vidurkiu (v) ar mediana (m)? ";
+    cin >> vm_pasirinkimas;
+    if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm' && vm_pasirinkimas != 'V' && vm_pasirinkimas != 'M')
+    {
+        // jei pasirinkimas neteisingas, automatiskai naudojamas vidurkis
+        cout << "Neteisinga pasirinkimo reiksme. Automatiskai naudojamas vidurkis." << endl;
+        vm_pasirinkimas = 'v';
+    }
+
     cout << "Pasirinkite ivedimo buda: " << endl;
     cout << "1 - ivedimas is failo" << endl;
     cout << "2 - ivedimas ranka" << endl;
@@ -24,19 +33,40 @@ int main()
         cin >> ivedimo_pasirinkimas;
     }
 
-    cout << "Skaiciuoti galutini bala vidurkiu (v) arba mediana (m)? ";
-    cin >> vm_pasirinkimas;
-    if (vm_pasirinkimas != 'v' && vm_pasirinkimas != 'm' && vm_pasirinkimas != 'V' && vm_pasirinkimas != 'M')
-    {
-        // jei pasirinkimas neteisingas, automatiskai naudojamas vidurkis
-        cout << "Neteisinga pasirinkimo reiksme. Automatiskai naudojamas vidurkis." << endl;
-        vm_pasirinkimas = 'v';
-    }
-
+    
     if (ivedimo_pasirinkimas == 1)
     {
-        ivedimas_is_file(grupe, vm_pasirinkimas);
+        cout << "Pasirinkite sugeneruota duomenu faila: " << endl;
+        cout << "1 - Studentai50.txt" << endl;
+        cout << "2 - Studentai1000.txt" << endl;
+        cout << "3 - Studentai10000.txt" << endl;
+
+        int failo_pasirinkimas;
+        cin >> failo_pasirinkimas;
+        // jei pasirinkimas neteisingas, ivedimas kartojamas
+        while (failo_pasirinkimas != 1 && failo_pasirinkimas != 2 && failo_pasirinkimas != 3)
+        {
+            cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
+            cout << "1 - Studentai50.txt" << endl;
+            cout << "2 - Studentai1000.txt" << endl;
+            cout << "3 - Studentai10000.txt" << endl;
+            cin >> failo_pasirinkimas;
+        }
+
+        if (failo_pasirinkimas == 1)
+        {
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai50.txt");
+        }
+        else if (failo_pasirinkimas == 2)
+        {
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
+        }
+        else
+        {
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000.txt");
+        }
     }
+
     else
     {
         if (ivedimo_pasirinkimas == 2)
@@ -46,10 +76,10 @@ int main()
 
         cout << "Keliu studentu galutini bala norite suskaiciuoti ? ";
         cin >> n;
-        if (n < 1)
+        while (n < 1)
         {
             cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
-            return 0;
+            cin >> n;
         }
 
         for (int j = 0; j < n; j++)
@@ -102,6 +132,7 @@ int main()
     {
         std::cerr << "Ivedimo klaida: " << e.what() << endl;
     }
+
 
     // spausdinama lentele
     if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
