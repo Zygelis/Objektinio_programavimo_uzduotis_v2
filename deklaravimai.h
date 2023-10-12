@@ -12,6 +12,7 @@ void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_
 void duomenu_kurimas(int numLines);
 double medianos_skaiciavimas(vector<int> vec);
 vector<int> random_skaicius(int n);
+bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b);
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b);
 void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
 studentas rankinis_ivedimas();

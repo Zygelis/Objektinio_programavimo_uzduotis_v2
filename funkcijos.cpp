@@ -69,6 +69,11 @@ void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskri
 }
 
 
+bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b) {
+    return a.rez < b.rez;
+}
+
+
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b)
 {
     return a.vardas < b.vardas;

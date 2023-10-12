@@ -174,6 +174,10 @@ int main()
     // suskirstoma i dvi grupes
     rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvočiai);
 
+    // surusiuojama pagal rezultata
+    sort(galvočiai.begin(), galvočiai.end(), palyginimas_pagal_rezultata);
+    sort(nuskriaustukai.begin(), nuskriaustukai.end(), palyginimas_pagal_rezultata);
+
     // irasom i file
     issaugojam_duomenis(galvočiai, "galvociai.txt");
     issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
