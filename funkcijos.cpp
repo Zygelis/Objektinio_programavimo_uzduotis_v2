@@ -58,10 +58,22 @@ void duomenu_kurimas(int n_eiluciu) {
 }
 
 
+void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvočiai) {
+    for (const auto& student : grupe) {
+        if (student.rez >= 5.0) {
+            galvočiai.push_back(student);
+        } else {
+            nuskriaustukai.push_back(student);
+        }
+    }
+}
+
+
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b)
 {
     return a.vardas < b.vardas;
 }
+
 
 double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas &laikinas)
 {
@@ -95,6 +107,7 @@ double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas &laikinas)
     }
 }
 
+
 double medianos_skaiciavimas(vector<int> vektorius)
 {
     int vektoriaus_ilgis = vektorius.size();
@@ -117,6 +130,7 @@ double medianos_skaiciavimas(vector<int> vektorius)
         return (vektorius[vektoriaus_ilgis / 2]);
     }
 }
+
 
 vector<int> random_skaicius(int n)
 {

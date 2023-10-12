@@ -5,6 +5,9 @@ int main()
 {
     studentas laikinas;
     vector<studentas> grupe;
+
+    vector<studentas> galvočiai;
+    vector<studentas> nuskriaustukai;
     char vm_pasirinkimas;
     int n;
 
@@ -168,6 +171,11 @@ int main()
     // // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
     // printf("|--------------------|--------------------|--------------------|\n");
 
-    // issaugojam i file
-    issaugojam_duomenis(grupe, "rezultatai.txt");
+    // suskirstoma i dvi grupes
+    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvočiai);
+
+    // irasom i file
+    issaugojam_duomenis(galvočiai, "galvociai.txt");
+    issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
+    cout << "Duomenys issaugoti." << endl;
 }

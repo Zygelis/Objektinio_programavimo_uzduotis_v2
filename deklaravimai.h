@@ -7,6 +7,7 @@ struct studentas {
     double rez;
 };
 
+void rusiuojame_i_dvi_grupes(std::vector<studentas>& grupe, std::vector<studentas>& nuskriaustukai, std::vector<studentas>& galvočiai);
 void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
 void duomenu_kurimas(int numLines);
 double medianos_skaiciavimas(vector<int> vec);
