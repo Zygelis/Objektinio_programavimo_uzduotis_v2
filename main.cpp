@@ -31,8 +31,8 @@ int main()
     {
         cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
         cout << "1 - ivedimas is failo" << endl;
-        cout << "2 - ivedimas ranka" << endl;
-        cout << "3 - sugeneravimas atsitiktinai" << endl;
+        cout << "2 - ivedimas klaviatura" << endl;
+        cout << "3 - failu sugeneravimas (jei atskirai)" << endl;
         cin >> ivedimo_pasirinkimas;
     }
 
@@ -88,12 +88,24 @@ int main()
 
     }
 
-    else
+    else if (ivedimo_pasirinkimas == 2)
     {
-        if (ivedimo_pasirinkimas == 2)
-            cout << "Kadangi pasirinkote ivedima ranka." << endl;
-        if (ivedimo_pasirinkimas == 3)
-            cout << "Kadangi pasirinkote sugeneravima atsitiktinai." << endl;
+
+        cout << "Pasirinkote ivedima klaviatura. " << endl;
+        cout << "Ar norite: " << endl;
+        cout << "1 - ivedineti pazymiu duomenis ranka" << endl;
+        cout << "2 - sugeneruoti pazymiu duomenis atsitiktinai" << endl;
+
+        int pazymiu_pasirinkimas;
+        cin >> pazymiu_pasirinkimas;
+    
+        while (pazymiu_pasirinkimas != 1 && pazymiu_pasirinkimas != 2)
+        {
+            cout << "Neteisinga pasirinkimo reiksme. Iveskite 1 arba 2." << endl;
+            cout << "1 - ivedineti pazymiu duomenis ranka" << endl;
+            cout << "2 - sugeneruoti pazymiu duomenis atsitiktinai" << endl;
+            cin >> pazymiu_pasirinkimas;
+        }
 
         cout << "Keliu studentu galutini bala norite suskaiciuoti ? ";
         cin >> n;
@@ -105,7 +117,7 @@ int main()
 
         for (int j = 0; j < n; j++)
         {
-            if (ivedimo_pasirinkimas == 2)
+            if (pazymiu_pasirinkimas == 1)
             {
                 // ivedama ranka
                 laikinas = rankinis_ivedimas();
@@ -127,6 +139,20 @@ int main()
             }
         }
     }
+    else
+    {
+        cout << "Pasirinkote duomenu sugeneravima." << endl;
+        cout << "Kiek studentu norite sugeneruoti? ";
+        cin >> n;
+        while (n < 1)
+        {
+            cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
+            cin >> n;
+        }
+        duomenu_kurimas(n);
+        ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai" + std::to_string(n) + ".txt");
+    }
+
 
     // // surusiuojama pagal varda jei taip pasirinkta
     // cout << "Ar norite surusiuoti pagal varda? (t/n)" << std::endl;
