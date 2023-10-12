@@ -177,34 +177,6 @@ int main()
         ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai" + std::to_string(n) + ".txt");
     }
 
-
-    // // surusiuojama pagal varda jei taip pasirinkta
-    // cout << "Ar norite surusiuoti pagal varda? (t/n)" << std::endl;
-    // char surusiuoti;
-    // cin >> surusiuoti;
-
-    // try
-    // {
-    //     if (surusiuoti == 't' || surusiuoti == 'T')
-    //     {
-    //         sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
-    //         cout << "Sarasa surusiuotas pagal varda." << endl;
-    //     }
-    //     else if (surusiuoti == 'n' || surusiuoti == 'N')
-    //     {
-    //         cout << "Nesurusiuojama." << endl;
-    //     }
-    //     else
-    //     {
-    //         throw std::runtime_error("Neteisingas pasirinkimas. Galima pasirinkti tik 't' arba 'n'. Automatiškai nesurusiuojama.");
-    //     }
-    // }
-    // catch (const std::exception &e)
-    // {
-    //     std::cerr << "Ivedimo klaida: " << e.what() << endl;
-    // }
-
-
     // // spausdinama lentele
     // if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
     // {
@@ -221,19 +193,23 @@ int main()
     // // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
     // printf("|--------------------|--------------------|--------------------|\n");
 
-    // suskirstoma i dvi grupes
+    // surusiuojama pagal rezultata
     auto start_time = std::chrono::high_resolution_clock::now();
-    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvočiai);
+    sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
-    cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
-    
-    // surusiuojama pagal rezultata
-    //sort(galvočiai.begin(), galvočiai.end(), palyginimas_pagal_rezultata);
-    //sort(nuskriaustukai.begin(), nuskriaustukai.end(), palyginimas_pagal_rezultata);
+    cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
 
-    // irasom i file
+    // suskirstoma i dvi grupes
+    start_time = std::chrono::high_resolution_clock::now();
+    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvočiai);
+    end_time = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+    cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+
+    // irasom i file galvocius
     start_time = std::chrono::high_resolution_clock::now();
     issaugojam_duomenis(galvočiai, "galvociai.txt");
     end_time = std::chrono::high_resolution_clock::now();
@@ -241,14 +217,11 @@ int main()
 
     cout << "Galvociu irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
 
-
+    // irasom i file nuskriaustukus
     start_time = std::chrono::high_resolution_clock::now();
     issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
     end_time = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
     cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
-
-
-    cout << "Duomenys issaugoti." << endl;
 }
