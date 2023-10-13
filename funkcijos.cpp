@@ -8,22 +8,23 @@ void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_
     // antrastine eilute
     isvesties_file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde";
 
-    for (int i = 1; i <= studentai[0].paz.size(); i++) {
-        isvesties_file << std::setw(20) << "ND" + std::to_string(i);
-    }
-    isvesties_file << std::setw(20) << "Egzaminas" << std::setw(20) << "Rezultatas" << std::endl;
+    // for (int i = 1; i <= studentai[0].paz.size(); i++) {
+    //     isvesties_file << std::setw(20) << "ND" + std::to_string(i);
+    // }
+    // isvesties_file << std::setw(20) << "Egzaminas" 
+    isvesties_file << std::setw(20) << "Rezultatas" << std::endl;
 
     // irasomi duomenys
     for (const auto& student : studentai) {
         isvesties_file << std::left << std::setw(20) << student.vardas
                        << std::setw(20) << student.pavarde;
 
-        for (int pazymys : student.paz) {
-            isvesties_file << std::setw(20) << pazymys;
-        }
+        // for (int pazymys : student.paz) {
+        //     isvesties_file << std::setw(20) << pazymys;
+        // }
 
-        isvesties_file << std::setw(20) << student.egz
-                       << std::setw(20) << student.rez << std::endl;
+        // isvesties_file << std::setw(20) << student.egz
+        isvesties_file << std::setw(20) << student.rez << std::endl;
     }
 
     isvesties_file.close();
@@ -60,9 +61,10 @@ void duomenu_kurimas(int n_eiluciu) {
 }
 
 
-void laiko_skaicuokle(int n_eil, int n) {
+void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double bendras_laikas_ivedimo = 0.0;
     double bendras_laikas_rusiavimo = 0.0;
+    double bendras_laikas_rusiavimo_dvi = 0.0;
     double bendras_laika_issaugojimo_galvociai = 0.0;
     double bendras_laika_issaugojimo_nuskriaustukai = 0.0;
     
@@ -85,22 +87,41 @@ void laiko_skaicuokle(int n_eil, int n) {
 
         bendras_laikas_ivedimo += static_cast<double>(laikas_ivedimo.count());
 
+
         laikas_pradzia = std::chrono::high_resolution_clock::now();
-        rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+        if (rusiavimo_pasirinkimas == 1) {
+            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+        } else if (rusiavimo_pasirinkimas == 2) {
+            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_pavarde);
+        } else {
+            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
+        }
         laikas_pabaiga = std::chrono::high_resolution_clock::now();
         auto laikas_rusiavimo = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laikas_rusiavimo += static_cast<double>(laikas_rusiavimo.count());
 
+
         laikas_pradzia = std::chrono::high_resolution_clock::now();
-        issaugojam_duomenis(galvociai, "galvociai.txt");
+        rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+        laikas_pabaiga = std::chrono::high_resolution_clock::now();
+        auto laikas_rusiavimo_dvi = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_rusiavimo_dvi += static_cast<double>(laikas_rusiavimo_dvi.count());
+
+
+        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        string galvociai_pav = "galvociai" + std::to_string(n_eil) + ".txt";
+        issaugojam_duomenis(galvociai, galvociai_pav);
         laikas_pabaiga = std::chrono::high_resolution_clock::now();
         auto laikas_issaugojimo_galvociai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laika_issaugojimo_galvociai += static_cast<double>(laikas_issaugojimo_galvociai.count());
 
+
         laikas_pradzia = std::chrono::high_resolution_clock::now();
-        issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
+        string nuskriaustukai_pav = "nuskriaustukai" + std::to_string(n_eil) + ".txt";
+        issaugojam_duomenis(nuskriaustukai, nuskriaustukai_pav);
         laikas_pabaiga = std::chrono::high_resolution_clock::now();
         auto laikas_issaugojimo_nuskriaustukai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
 
@@ -111,11 +132,13 @@ void laiko_skaicuokle(int n_eil, int n) {
 
     double vid_bendras_laikas_ivedimo = bendras_laikas_ivedimo / static_cast<double>(n);
     double vid_bendras_laikas_rusiavimo = bendras_laikas_rusiavimo / static_cast<double>(n);
+    double vid_bendras_laikas_rusiavimo_dvi = bendras_laikas_rusiavimo_dvi / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_galvociai = bendras_laika_issaugojimo_galvociai / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_nuskriaustukai = bendras_laika_issaugojimo_nuskriaustukai / static_cast<double>(n);
 
     cout << "Vidutinis failo nuskaitymo laikas: " << vid_bendras_laikas_ivedimo << " milliseconds (" << vid_bendras_laikas_ivedimo / 1000.0 << " seconds)" << endl;
-    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas: " << vid_bendras_laikas_rusiavimo << " milliseconds (" << vid_bendras_laikas_rusiavimo / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu rusiavimo laikas: " << vid_bendras_laikas_rusiavimo << " milliseconds (" << vid_bendras_laikas_rusiavimo / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas: " << vid_bendras_laikas_rusiavimo_dvi << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis galvociu irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_galvociai << " milliseconds (" << vid_bendras_laika_issaugojimo_galvociai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis nuskriaustuku irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_nuskriaustukai << " milliseconds (" << vid_bendras_laika_issaugojimo_nuskriaustukai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis bendras laikas: " << vid_bendras_laikas_ivedimo + vid_bendras_laikas_rusiavimo + vid_bendras_laika_issaugojimo_galvociai + vid_bendras_laika_issaugojimo_nuskriaustukai;
@@ -143,6 +166,11 @@ bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b) {
 bool palyginimas_pagal_varda(const studentas &a, const studentas &b)
 {
     return a.vardas < b.vardas;
+}
+
+bool palyginimas_pagal_pavarde(const studentas &a, const studentas &b)
+{
+    return a.pavarde < b.pavarde;
 }
 
 
