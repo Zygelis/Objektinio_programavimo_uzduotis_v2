@@ -3,28 +3,28 @@
 
 
 void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard) {
-    std::ofstream isvesties_file(file_vard);
+    ofstream isvesties_file(file_vard);
 
     // antrastine eilute
-    isvesties_file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde";
+    isvesties_file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
 
     // for (int i = 1; i <= studentai[0].paz.size(); i++) {
-    //     isvesties_file << std::setw(20) << "ND" + std::to_string(i);
+    //     isvesties_file << setw(20) << "ND" + to_string(i);
     // }
-    // isvesties_file << std::setw(20) << "Egzaminas" 
-    isvesties_file << std::setw(20) << "Rezultatas" << std::endl;
+    // isvesties_file << setw(20) << "Egzaminas" 
+    isvesties_file << setw(20) << "Rezultatas" << endl;
 
     // irasomi duomenys
     for (const auto& student : studentai) {
-        isvesties_file << std::left << std::setw(20) << student.vardas
-                       << std::setw(20) << student.pavarde;
+        isvesties_file << left << setw(20) << student.vardas
+                       << setw(20) << student.pavarde;
 
         // for (int pazymys : student.paz) {
-        //     isvesties_file << std::setw(20) << pazymys;
+        //     isvesties_file << setw(20) << pazymys;
         // }
 
-        // isvesties_file << std::setw(20) << student.egz
-        isvesties_file << std::setw(20) << student.rez << std::endl;
+        // isvesties_file << setw(20) << student.egz
+        isvesties_file << setw(20) << student.rez << endl;
     }
 
     isvesties_file.close();
@@ -32,29 +32,29 @@ void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_
 
 
 void duomenu_kurimas(int n_eiluciu) {
-    std::ofstream isvesties_file("Studentai" + std::to_string(n_eiluciu) + ".txt");
+    ofstream isvesties_file("Studentai" + to_string(n_eiluciu) + ".txt");
 
     srand((unsigned)time(NULL));
 
     // antrastine eilute
-    isvesties_file << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde";
+    isvesties_file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
 
     for (int i = 1; i <= 15; i++) {
-        isvesties_file << std::setw(20) << "ND" + std::to_string(i);
+        isvesties_file << setw(20) << "ND" + to_string(i);
     }
-    isvesties_file << std::setw(20) << "Egz." << std::endl;
+    isvesties_file << setw(20) << "Egz." << endl;
 
     // generuojami duomenys
     for (int i = 1; i <= n_eiluciu; i++) {
-        isvesties_file << std::left << std::setw(20) << "Vardas" + std::to_string(i) << std::setw(20) << "Pavarde" + std::to_string(i);
+        isvesties_file << left << setw(20) << "Vardas" + to_string(i) << setw(20) << "Pavarde" + to_string(i);
 
         for (int j = 1; j <= 15; j++) {
             int pazymys = rand() % 10 + 1; 
-            isvesties_file << std::setw(20) << pazymys;
+            isvesties_file << setw(20) << pazymys;
         }
 
         int egzaminas = rand() % 10 + 1; 
-        isvesties_file << std::setw(20) << egzaminas << std::endl;
+        isvesties_file << setw(20) << egzaminas << endl;
     }
 
     isvesties_file.close();
@@ -73,57 +73,57 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
     vector<studentas> galvociai;
     vector<studentas> nuskriaustukai;
     char vm = 'm';
-    string filename = "Studentai" + std::to_string(n_eil) + ".txt";
+    string filename = "Studentai" + to_string(n_eil) + ".txt";
 
     for (int i = 0; i < n; i++) {
         grupe.clear();
         galvociai.clear();
         nuskriaustukai.clear();
 
-        auto laikas_pradzia = std::chrono::high_resolution_clock::now();
+        auto laikas_pradzia = high_resolution_clock::now();
         ivedimas_is_file(grupe, vm, filename);
-        auto laikas_pabaiga = std::chrono::high_resolution_clock::now();
-        auto laikas_ivedimo = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+        auto laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_ivedimo = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laikas_ivedimo += static_cast<double>(laikas_ivedimo.count());
 
 
-        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        laikas_pradzia = high_resolution_clock::now();
         if (rusiavimo_pasirinkimas == 1) {
-            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
+            sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
         } else if (rusiavimo_pasirinkimas == 2) {
-            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_pavarde);
+            sort(grupe.begin(), grupe.end(), palyginimas_pagal_pavarde);
         } else {
-            std::sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
+            sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
         }
-        laikas_pabaiga = std::chrono::high_resolution_clock::now();
-        auto laikas_rusiavimo = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_rusiavimo = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laikas_rusiavimo += static_cast<double>(laikas_rusiavimo.count());
 
 
-        laikas_pradzia = std::chrono::high_resolution_clock::now();
+        laikas_pradzia = high_resolution_clock::now();
         rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
-        laikas_pabaiga = std::chrono::high_resolution_clock::now();
-        auto laikas_rusiavimo_dvi = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_rusiavimo_dvi = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laikas_rusiavimo_dvi += static_cast<double>(laikas_rusiavimo_dvi.count());
 
 
-        laikas_pradzia = std::chrono::high_resolution_clock::now();
-        string galvociai_pav = "galvociai" + std::to_string(n_eil) + ".txt";
+        laikas_pradzia = high_resolution_clock::now();
+        string galvociai_pav = "galvociai" + to_string(n_eil) + ".txt";
         issaugojam_duomenis(galvociai, galvociai_pav);
-        laikas_pabaiga = std::chrono::high_resolution_clock::now();
-        auto laikas_issaugojimo_galvociai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_issaugojimo_galvociai = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laika_issaugojimo_galvociai += static_cast<double>(laikas_issaugojimo_galvociai.count());
 
 
-        laikas_pradzia = std::chrono::high_resolution_clock::now();
-        string nuskriaustukai_pav = "nuskriaustukai" + std::to_string(n_eil) + ".txt";
+        laikas_pradzia = high_resolution_clock::now();
+        string nuskriaustukai_pav = "nuskriaustukai" + to_string(n_eil) + ".txt";
         issaugojam_duomenis(nuskriaustukai, nuskriaustukai_pav);
-        laikas_pabaiga = std::chrono::high_resolution_clock::now();
-        auto laikas_issaugojimo_nuskriaustukai = std::chrono::duration_cast<std::chrono::milliseconds>(laikas_pabaiga - laikas_pradzia);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_issaugojimo_nuskriaustukai = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laika_issaugojimo_nuskriaustukai += static_cast<double>(laikas_issaugojimo_nuskriaustukai.count());
     }
@@ -184,7 +184,7 @@ double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas &laikinas)
             return 0;
         }
         // skaičiuojama pagal vidurki
-        double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
+        double mean = accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
         return 0.4 * mean + 0.6 * laikinas.egz;
     }
     else if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
@@ -201,7 +201,7 @@ double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas &laikinas)
     {
         // jei pasirinkimas neteisingas, naudojamas vidurkis
         cout << "Neteisinga pasirinkimo reiksme. Naudojamas vidurkis." << endl;
-        double mean = std::accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
+        double mean = accumulate(laikinas.paz.begin(), laikinas.paz.end(), 0.0) / laikinas.paz.size();
         return 0.4 * mean + 0.6 * laikinas.egz;
     }
 }
@@ -216,7 +216,7 @@ double medianos_skaiciavimas(vector<int> vektorius)
         return 0; // jei vektoriaus dydis lygus 0, grazinamas 0
     }
 
-    std::sort(vektorius.begin(), vektorius.end()); // vektoriaus elementai surusiuojami didejimo tvarka
+    sort(vektorius.begin(), vektorius.end()); // vektoriaus elementai surusiuojami didejimo tvarka
 
     if (vektoriaus_ilgis % 2 == 0)
     {

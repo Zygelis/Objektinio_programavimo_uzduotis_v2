@@ -77,7 +77,7 @@ int main()
         }
 
         // matuojam file generavima
-        auto start_time = std::chrono::high_resolution_clock::now();
+        auto start_time = high_resolution_clock::now();
 
         if (failo_pasirinkimas == 1) {
             duomenu_kurimas(1000);
@@ -96,13 +96,13 @@ int main()
             cout << "Failo is 10000000 irasu generavimo laikas: ";
         }
 
-        auto end_time = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+        auto end_time = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(end_time - start_time);
 
         cout  << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
         // matuojam ivedima is file
-        start_time = std::chrono::high_resolution_clock::now();
+        start_time = high_resolution_clock::now();
 
         if (failo_pasirinkimas == 1) {
             ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
@@ -121,10 +121,10 @@ int main()
             cout << "Failo is 10000000 nuskaitymo laikas: ";
         }
 
-        end_time = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+        end_time = high_resolution_clock::now();
+        duration = duration_cast<milliseconds>(end_time - start_time);
 
-        std::cout << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+        cout << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
     }
 
     else if (ivedimo_pasirinkimas == 2)
@@ -189,7 +189,7 @@ int main()
             cin >> n;
         }
         duomenu_kurimas(n);
-        ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai" + std::to_string(n) + ".txt");
+        ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai" + to_string(n) + ".txt");
     }
 
     // // spausdinama lentele
@@ -205,51 +205,51 @@ int main()
     // printf("|--------------------|--------------------|--------------------|\n");
     // for (auto &a : grupe)
     //     printf("|%20s|%20s|%20.2f|\n", a.vardas.c_str(), a.pavarde.c_str(), a.rez); // %20.2f - %20 simboliu plotis, 2f skaiciai po kablelio
-    // // panasiai kaip su - cout << std::fixed << std::setprecision(2) << a.rez << endl;
+    // // panasiai kaip su - cout << fixed << setprecision(2) << a.rez << endl;
     // printf("|--------------------|--------------------|--------------------|\n");
 
     if (rusiavimo_pasirinkimas == 1) {
         // surusiuojama pagal varda
-        auto start_time = std::chrono::high_resolution_clock::now();
+        auto start_time = high_resolution_clock::now();
         sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
-        auto end_time = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+        auto end_time = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-        cout << "Studentu rusiavimas pagal varda uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+        cout << "Studentu rusiavimas pagal varda uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
     }
     
     else {
         // surusiuojama pagal rezultata
-        auto start_time = std::chrono::high_resolution_clock::now();
+        auto start_time = high_resolution_clock::now();
         sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
-        auto end_time = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+        auto end_time = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-        cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+        cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
     }
 
 
     // suskirstoma i dvi grupes
-    auto start_time = std::chrono::high_resolution_clock::now();
+    auto start_time = high_resolution_clock::now();
     rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
-    auto end_time = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    auto end_time = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-    cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+    cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
     // irasom i file galvocius
-    start_time = std::chrono::high_resolution_clock::now();
+    start_time = high_resolution_clock::now();
     issaugojam_duomenis(galvociai, "galvociai.txt");
-    end_time = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    end_time = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end_time - start_time);
 
-    cout << "Galvociu irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+    cout << "Galvociu irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
     // irasom i file nuskriaustukus
-    start_time = std::chrono::high_resolution_clock::now();
+    start_time = high_resolution_clock::now();
     issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
-    end_time = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    end_time = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end_time - start_time);
 
-    cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << std::endl;
+    cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 }
