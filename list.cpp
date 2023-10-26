@@ -271,9 +271,11 @@ void main_list()
     cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
 
-    for (auto& studentas : grupe) {
+    if (ivedimo_pasirinkimas == 2){
+        for (auto& studentas : grupe) {
     cout << "Studento objekto saugojimo atmintyje adresas: " << &studentas << endl;
     }
 
     cout << "Grupes objekto saugojimo atmintyje adresas: " << &grupe << endl;
+    }
 }

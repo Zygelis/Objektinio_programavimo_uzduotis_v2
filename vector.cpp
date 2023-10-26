@@ -271,9 +271,11 @@ void main_vector()
     cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
 
+    if (ivedimo_pasirinkimas == 2){
     for (auto& studentas : grupe) {
     cout << "Studento objekto saugojimo atmintyje adresas: " << &studentas << endl;
     }
 
     cout << "Grupes objekto saugojimo atmintyje adresas: " << &grupe << endl;
+    }
 }   
