@@ -38,8 +38,8 @@ int main()
     // Pasirenkamas ivedimo budas
     cout << "Pasirinkite ivedimo buda: " << endl;
     cout << "1 - ivedimas is failo" << endl;
-    cout << "2 - ivedimas ranka" << endl;
-    cout << "3 - sugeneravimas atsitiktinai" << endl;
+    cout << "2 - ivedimas ranka manualiai arba atsitiktiniu budu" << endl;
+    cout << "3 - studentu sugeneravimas atsitiktinai" << endl;
     int ivedimo_pasirinkimas;
     cin >> ivedimo_pasirinkimas;
     
@@ -47,8 +47,8 @@ int main()
     {
         cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
         cout << "1 - ivedimas is failo" << endl;
-        cout << "2 - ivedimas klaviatura" << endl;
-        cout << "3 - failu sugeneravimas (jei atskirai)" << endl;
+        cout << "2 - ivedimas ranka manualiai arba atsitiktiniu budu" << endl;
+        cout << "3 - studentu sugeneravimas atsitiktinai" << endl;
         cin >> ivedimo_pasirinkimas;
     }
 
@@ -192,21 +192,21 @@ int main()
         ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai" + to_string(n) + ".txt");
     }
 
-    // // spausdinama lentele
-    // if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
-    // {
-    //     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
-    // }
-    // else
-    // {
-    //     printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Vid.)");
-    // }
-    // // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
-    // printf("|--------------------|--------------------|--------------------|\n");
-    // for (auto &a : grupe)
-    //     printf("|%20s|%20s|%20.2f|\n", a.vardas.c_str(), a.pavarde.c_str(), a.rez); // %20.2f - %20 simboliu plotis, 2f skaiciai po kablelio
-    // // panasiai kaip su - cout << fixed << setprecision(2) << a.rez << endl;
-    // printf("|--------------------|--------------------|--------------------|\n");
+    // spausdinama lentele
+    if (vm_pasirinkimas == 'm' || vm_pasirinkimas == 'M')
+    {
+        printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Med.)");
+    }
+    else
+    {
+        printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis (Vid.)");
+    }
+    // spausdinama pagal pasirinkima, arba vidurkis, arba mediana:
+    printf("|--------------------|--------------------|--------------------|\n");
+    for (auto &a : grupe)
+        printf("|%20s|%20s|%20.2f|\n", a.vardas.c_str(), a.pavarde.c_str(), a.rez); // %20.2f - %20 simboliu plotis, 2f skaiciai po kablelio
+    // panasiai kaip su - cout << fixed << setprecision(2) << a.rez << endl;
+    printf("|--------------------|--------------------|--------------------|\n");
 
     if (rusiavimo_pasirinkimas == 1) {
         // surusiuojama pagal varda
