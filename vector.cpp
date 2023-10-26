@@ -24,14 +24,16 @@ void main_vector()
     // Pasirenkama pagal ka rusiuoti
     cout << "Pagal ka norite rusiuoti: " << endl;
     cout << "1 - pagal varda" << endl;
-    cout << "2 - pagal galutini bala" << endl;
+    cout << "2 - pagal pavarde" << endl;
+    cout << "3 - pagal galutini bala" << endl;
     cin >> rusiavimo_pasirinkimas;
     
-    while (rusiavimo_pasirinkimas != 1 && rusiavimo_pasirinkimas != 2)
+    while (rusiavimo_pasirinkimas != 1 && rusiavimo_pasirinkimas != 2 && rusiavimo_pasirinkimas != 3)
     {
-        cout << "Neteisinga pasirinkimo reiksme. Iveskite 1 arba 2." << endl;
+        cout << "Neteisinga pasirinkimo reiksme. Iveskite 1, 2 arba 3." << endl;
         cout << "1 - pagal varda" << endl;
-        cout << "2 - pagal galutini bala" << endl;
+        cout << "2 - pagal pavarde" << endl;
+        cout << "3 - pagal galutini bala" << endl;
         cin >> rusiavimo_pasirinkimas;
     }
 
@@ -217,7 +219,15 @@ void main_vector()
 
         cout << "Studentu rusiavimas pagal varda uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
     }
-    
+    if (rusiavimo_pasirinkimas == 2) {
+        // surusiuojama pagal pavarde
+        auto start_time = high_resolution_clock::now();
+        sort(grupe.begin(), grupe.end(), palyginimas_pagal_pavarde);
+        auto end_time = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(end_time - start_time);
+
+        cout << "Studentu rusiavimas pagal pavarde uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
+    }
     else {
         // surusiuojama pagal rezultata
         auto start_time = high_resolution_clock::now();
@@ -228,12 +238,19 @@ void main_vector()
         cout << "Studentu rusiavimas pagal rezultata uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
     }
 
-
-    // suskirstoma i dvi grupes
+    // irasom i file bendrus rez
     auto start_time = high_resolution_clock::now();
-    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+    issaugojam_duomenis(grupe, "bendri_studentu_rezultatai_vector.txt");
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end_time - start_time);
+
+    cout << "Bendru studentu rezultatu irasymas i faila uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
+
+    // suskirstoma i dvi grupes
+    start_time = high_resolution_clock::now();
+    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
+    end_time = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end_time - start_time);
 
     cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
@@ -252,4 +269,11 @@ void main_vector()
     duration = duration_cast<milliseconds>(end_time - start_time);
 
     cout << "Nuskriaustuku irasymo i faila laikas: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
-}
+
+
+    for (auto& studentas : grupe) {
+    cout << "Studento objekto saugojimo atmintyje adresas: " << &studentas << endl;
+    }
+
+    cout << "Grupes objekto saugojimo atmintyje adresas: " << &grupe << endl;
+}   

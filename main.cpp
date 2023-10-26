@@ -14,7 +14,7 @@ int main()
         cin >> konteinerio_pasirinkimas;
     }
 
-    if (konteinerio_pasirinkimas = 1){
+    if (konteinerio_pasirinkimas == 1){
         main_vector();
     }
     else{
