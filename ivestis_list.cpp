@@ -42,7 +42,7 @@ void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, co
         // skaiciuojamas galutinis balas
         laikinas.rez = galutinio_balo_skaiciavimas_list(vm_pasirinkimas, laikinas);
 
-        grupe.push_back(laikinas); // Add the student to the list
+        grupe.push_back(laikinas);
     }
 
     duomenys.close();
@@ -101,18 +101,18 @@ studentas_list rankinis_ivedimas_list()
 
             if (input < 0 || input > 10)
             {
-                cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << std::endl;
+                cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << endl;
                 continue;
             }
             laikinas.paz.push_back(input);
         }
         catch (const std::invalid_argument &)
         {
-            cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << std::endl;
+            cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << endl;
         }
         catch (const std::out_of_range &)
         {
-            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << endl;
         }
     }
 
@@ -144,7 +144,7 @@ studentas_list rankinis_ivedimas_list()
         }
         catch (const std::out_of_range &)
         {
-            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << endl;
         }
     }
 

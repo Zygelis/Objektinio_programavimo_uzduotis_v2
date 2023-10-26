@@ -1,52 +1,6 @@
 #include "my_lib.h"
 #include "deklaravimai.h"
 
-void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard)
-{
-    ifstream duomenys(duom_vard);
-
-    if (!duomenys.is_open())
-    {
-        cout << "Neatsidare duomenys " << endl;
-        return;
-    }
-
-    string pirma_eilute;
-    getline(duomenys, pirma_eilute);
-    //cin.ignore();
-
-    string eilute;
-    while (getline(duomenys, eilute))
-    { // kol nera pasiekta failo pabaiga skaitome po eilute
-        studentas_list laikinas;
-
-        if (eilute.empty() || all_of(eilute.begin(), eilute.end(), ::isspace))
-        {
-            continue;
-        }
-
-        istringstream iss(eilute); // pasiverciame eilute i srauta is kurio galima skaityti lengviau
-        //
-        iss >> laikinas.vardas >> laikinas.pavarde;
-
-        int pazymiai;
-        // Read scores
-        while (iss >> pazymiai)
-        { // kol yra skaiciu tol skaitome
-            laikinas.paz.push_back(pazymiai);
-        }
-        // egzamino rezultatas yra paskutinis skaicius prie pazymiu
-        laikinas.egz = laikinas.paz.back();
-        laikinas.paz.pop_back(); // pasaliname egzamino rezultata is pazymiu list konteinerio
-        // skaiciuojamas galutinis balas
-        laikinas.rez = galutinio_balo_skaiciavimas_list(vm_pasirinkimas, laikinas);
-
-        grupe.push_back(laikinas); // Add the student to the list
-    }
-
-    duomenys.close();
-}
-
 
 void issaugojam_duomenis_list(const list<studentas_list>& studentai, const string& file_vard) {
     ofstream isvesties_file(file_vard);
@@ -65,6 +19,7 @@ void issaugojam_duomenis_list(const list<studentas_list>& studentai, const strin
 
     isvesties_file.close();
 }
+
 
 void duomenu_kurimas_list(int n_eiluciu) {
     ofstream isvesties_file("Studentai" + to_string(n_eiluciu) + ".txt");
@@ -95,6 +50,7 @@ void duomenu_kurimas_list(int n_eiluciu) {
     isvesties_file.close();
 }
 
+
 void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double bendras_laikas_ivedimo = 0.0;
     double bendras_laikas_rusiavimo = 0.0;
@@ -123,20 +79,11 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
 
         laikas_pradzia = high_resolution_clock::now();
         if (rusiavimo_pasirinkimas == 1) {
-            //grupe.sort(palyginimas_pagal_varda);
-            grupe.sort([](const studentas_list& a, const studentas_list& b) {
-            return a.vardas < b.vardas;
-        });
+            grupe.sort(palyginimas_pagal_varda_list);
         } else if (rusiavimo_pasirinkimas == 2) {
-            //grupe.sort(palyginimas_pagal_pavarde);
-            grupe.sort([](const studentas_list& a, const studentas_list& b) {
-            return a.pavarde < b.pavarde;
-        });
+            grupe.sort(palyginimas_pagal_pavarde_list);
         } else {
-            //grupe.sort(palyginimas_pagal_rezultata);
-            grupe.sort([](const studentas_list& a, const studentas_list& b) {
-            return a.rez < b.rez;
-        });
+            grupe.sort(palyginimas_pagal_rezultata_list);
         }
         laikas_pabaiga = high_resolution_clock::now();
         auto laikas_rusiavimo = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
@@ -185,6 +132,7 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     cout << endl;
 }
 
+
 void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvočiai) {
     for (const auto& student : grupe) {
         if (student.rez >= 5.0) {
@@ -195,19 +143,23 @@ void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_li
     }
 }
 
+
 bool palyginimas_pagal_rezultata_list(const studentas_list& a, const studentas_list& b) {
     return a.rez < b.rez;
 }
+
 
 bool palyginimas_pagal_varda_list(const studentas_list &a, const studentas_list &b)
 {
     return a.vardas < b.vardas;
 }
 
+
 bool palyginimas_pagal_pavarde_list(const studentas_list &a, const studentas_list &b)
 {
     return a.pavarde < b.pavarde;
 }
+
 
 double galutinio_balo_skaiciavimas_list(char vm_pasirinkimas, studentas_list &laikinas)
 {
@@ -241,6 +193,7 @@ double galutinio_balo_skaiciavimas_list(char vm_pasirinkimas, studentas_list &la
     }
 }
 
+
 double medianos_skaiciavimas_list(list<int> listas)
 {
     int list_ilgis = listas.size();
@@ -270,6 +223,7 @@ double medianos_skaiciavimas_list(list<int> listas)
         return *it;
     }
 }
+
 
 list<int> random_skaicius_list(int n)
 {
