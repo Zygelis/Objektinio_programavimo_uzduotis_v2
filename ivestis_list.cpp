@@ -2,7 +2,7 @@
 #include "deklaravimai.h"
 
 
-void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const string &duom_vard)
+void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard)
 {
     ifstream duomenys(duom_vard);
 
@@ -19,9 +19,9 @@ void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const stri
     string eilute;
     while (getline(duomenys, eilute))
     { // kol nera pasiekta failo pabaiga skaitome po eilute
-        studentas laikinas;
+        studentas_list laikinas;
 
-        if (eilute.empty() || std::all_of(eilute.begin(), eilute.end(), ::isspace))
+        if (eilute.empty() || all_of(eilute.begin(), eilute.end(), ::isspace))
         {
             continue;
         }
@@ -38,20 +38,20 @@ void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const stri
         }
         // egzamino rezultatas yra paskutinis skaicius prie pazymiu
         laikinas.egz = laikinas.paz.back();
-        laikinas.paz.pop_back(); // pasaliname egzamino rezultata is pazymiu vektoriaus
+        laikinas.paz.pop_back(); // pasaliname egzamino rezultata is pazymiu list konteinerio
         // skaiciuojamas galutinis balas
-        laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
+        laikinas.rez = galutinio_balo_skaiciavimas_list(vm_pasirinkimas, laikinas);
 
-        grupe.push_back(laikinas); // Add the student to the vector
+        grupe.push_back(laikinas); // Add the student to the list
     }
 
     duomenys.close();
 }
 
 
-studentas atsitiktinis_ivedimas()
+studentas_list atsitiktinis_ivedimas_list()
 {
-    studentas laikinas;
+    studentas_list laikinas;
     cout << "Iveskite varda ir pavarde:";
     cin >> laikinas.vardas >> laikinas.pavarde;
 
@@ -60,8 +60,8 @@ studentas atsitiktinis_ivedimas()
     cin >> kiek_pazymiu;
 
     // sugeneruojami pazymiai
-    laikinas.paz = random_skaicius(kiek_pazymiu);
-    laikinas.egz = random_skaicius(1)[0];
+    laikinas.paz = random_skaicius_list(kiek_pazymiu);
+    laikinas.egz = random_skaicius_list(1).front();
 
     cout << "Sugeneruoti pazymiai: ";
     for (auto &a : laikinas.paz)
@@ -76,9 +76,9 @@ studentas atsitiktinis_ivedimas()
 }
 
 
-studentas rankinis_ivedimas()
+studentas_list rankinis_ivedimas_list()
 {
-    studentas laikinas;
+    studentas_list laikinas;
 
     cout << "Iveskite varda ir pavarde:";
     cin >> laikinas.vardas >> laikinas.pavarde;
