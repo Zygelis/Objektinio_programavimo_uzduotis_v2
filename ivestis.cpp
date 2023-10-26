@@ -21,7 +21,7 @@ void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const stri
     { // kol nera pasiekta failo pabaiga skaitome po eilute
         studentas laikinas;
 
-        if (eilute.empty() || std::all_of(eilute.begin(), eilute.end(), ::isspace))
+        if (eilute.empty() || all_of(eilute.begin(), eilute.end(), ::isspace))
         {
             continue;
         }
@@ -42,7 +42,7 @@ void ivedimas_is_file(vector<studentas> &grupe, char vm_pasirinkimas, const stri
         // skaiciuojamas galutinis balas
         laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
 
-        grupe.push_back(laikinas); // Add the student to the vector
+        grupe.push_back(laikinas);
     }
 
     duomenys.close();
@@ -101,18 +101,18 @@ studentas rankinis_ivedimas()
 
             if (input < 0 || input > 10)
             {
-                cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << std::endl;
+                cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << endl;
                 continue;
             }
             laikinas.paz.push_back(input);
         }
         catch (const std::invalid_argument &)
         {
-            cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << std::endl;
+            cout << "Neteisinga ivestis. Iveskite naturalu skaiciu tarp 1 ir 10: " << endl;
         }
         catch (const std::out_of_range &)
         {
-            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << endl;
         }
     }
 
@@ -144,7 +144,7 @@ studentas rankinis_ivedimas()
         }
         catch (const std::out_of_range &)
         {
-            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << std::endl;
+            cout << "Ivestas skaicius per didelis. Iveskite mazesni skaiciu." << endl;
         }
     }
 

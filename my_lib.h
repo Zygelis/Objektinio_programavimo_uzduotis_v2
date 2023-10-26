@@ -8,9 +8,23 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <list>
 
 using std::cout; 
 using std::string;
 using std::cin;
 using std::endl;
 using std::vector;
+using std::list;
+using std::setw;
+using std::left;
+using std::ofstream;
+using std::ifstream;
+using std::istringstream;
+using std::setprecision;
+using std::fixed;
+using std::to_string;
+using std::chrono::duration_cast;
+using std::chrono::high_resolution_clock;
+using std::chrono::milliseconds;
+using std::all_of;
