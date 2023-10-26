@@ -1,13 +1,13 @@
 #include "my_lib.h"
 #include "deklaravimai.h"
 
-void main_list()
+void main_vector()
 {
-    studentas_list laikinas;
-    list<studentas_list> grupe;
+    studentas laikinas;
+    vector<studentas> grupe;
 
-    list<studentas_list> galvociai;
-    list<studentas_list> nuskriaustukai;
+    vector<studentas> galvociai;
+    vector<studentas> nuskriaustukai;
     char vm_pasirinkimas;
     int rusiavimo_pasirinkimas;
     int n;
@@ -80,19 +80,19 @@ void main_list()
         auto start_time = high_resolution_clock::now();
 
         if (failo_pasirinkimas == 1) {
-            duomenu_kurimas_list(1000);
+            duomenu_kurimas(1000);
             cout << "Failo is 1000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 2) {
-            duomenu_kurimas_list(10000);
+            duomenu_kurimas(10000);
             cout << "Failo is 10000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 3) {
-            duomenu_kurimas_list(100000);
+            duomenu_kurimas(100000);
             cout << "Failo is 100000 irasu generavimo laikas: ";
         } else if (failo_pasirinkimas == 4) {
-            duomenu_kurimas_list(1000000);
+            duomenu_kurimas(1000000);
             cout << "Failo is 1000000 irasu generavimo laikas: ";
         } else {
-            duomenu_kurimas_list(10000000);
+            duomenu_kurimas(10000000);
             cout << "Failo is 10000000 irasu generavimo laikas: ";
         }
 
@@ -105,19 +105,19 @@ void main_list()
         start_time = high_resolution_clock::now();
 
         if (failo_pasirinkimas == 1) {
-            ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai1000.txt");
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000.txt");
             cout << "Failo is 1000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 2) {
-            ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai10000.txt");
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000.txt");
             cout << "Failo is 10000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 3) {
-            ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai100000.txt");
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai100000.txt");
             cout << "Failo is 100000 nuskaitymo laikas: ";
         } else if (failo_pasirinkimas == 4) {
-            ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai1000000.txt");
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai1000000.txt");
             cout << "Failo is 1000000 nuskaitymo laikas: ";
         } else {
-            ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai10000000.txt");
+            ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai10000000.txt");
             cout << "Failo is 10000000 nuskaitymo laikas: ";
         }
 
@@ -159,9 +159,9 @@ void main_list()
             if (pazymiu_pasirinkimas == 1)
             {
                 // ivedama ranka
-                laikinas = rankinis_ivedimas_list();
+                laikinas = rankinis_ivedimas();
                 // skaiciuojamas galutinis balas
-                laikinas.rez = galutinio_balo_skaiciavimas_list(vm_pasirinkimas, laikinas);
+                laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
                 grupe.push_back(laikinas);
                 laikinas.paz.clear();
                 continue;
@@ -169,9 +169,9 @@ void main_list()
             else
             {
                 // sugeneruojama atsitiktinai
-                laikinas = atsitiktinis_ivedimas_list();
+                laikinas = atsitiktinis_ivedimas();
                 // skaiciuojamas galutinis balas
-                laikinas.rez = galutinio_balo_skaiciavimas_list(vm_pasirinkimas, laikinas);
+                laikinas.rez = galutinio_balo_skaiciavimas(vm_pasirinkimas, laikinas);
                 grupe.push_back(laikinas);
                 laikinas.paz.clear();
                 continue;
@@ -188,8 +188,8 @@ void main_list()
             cout << "Neteisinga ivestis. Iveskite skaiciu didesni uz 0." << endl;
             cin >> n;
         }
-        duomenu_kurimas_list(n);
-        ivedimas_is_file_list(grupe, vm_pasirinkimas, "Studentai" + to_string(n) + ".txt");
+        duomenu_kurimas(n);
+        ivedimas_is_file(grupe, vm_pasirinkimas, "Studentai" + to_string(n) + ".txt");
     }
 
     // spausdinama lentele
@@ -211,7 +211,7 @@ void main_list()
     if (rusiavimo_pasirinkimas == 1) {
         // surusiuojama pagal varda
         auto start_time = high_resolution_clock::now();
-        grupe.sort(palyginimas_pagal_varda_list);
+        sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda);
         auto end_time = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(end_time - start_time);
 
@@ -221,7 +221,7 @@ void main_list()
     else {
         // surusiuojama pagal rezultata
         auto start_time = high_resolution_clock::now();
-        grupe.sort(palyginimas_pagal_rezultata_list);
+        sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata);
         auto end_time = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(end_time - start_time);
 
@@ -231,7 +231,7 @@ void main_list()
 
     // suskirstoma i dvi grupes
     auto start_time = high_resolution_clock::now();
-    rusiuojame_i_dvi_grupes_list(grupe, nuskriaustukai, galvociai);
+    rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end_time - start_time);
 
@@ -239,7 +239,7 @@ void main_list()
 
     // irasom i file galvocius
     start_time = high_resolution_clock::now();
-    issaugojam_duomenis_list(galvociai, "galvociai.txt");
+    issaugojam_duomenis(galvociai, "galvociai.txt");
     end_time = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end_time - start_time);
 
@@ -247,7 +247,7 @@ void main_list()
 
     // irasom i file nuskriaustukus
     start_time = high_resolution_clock::now();
-    issaugojam_duomenis_list(nuskriaustukai, "nuskriaustukai.txt");
+    issaugojam_duomenis(nuskriaustukai, "nuskriaustukai.txt");
     end_time = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end_time - start_time);
 
