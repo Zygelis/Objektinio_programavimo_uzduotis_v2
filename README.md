@@ -13,6 +13,27 @@
 
 ## Greičio testai
 
+Vector konteinerio greičiai:
+|                    failo dydis                    |      1000      |      10000      |    100000     |     1000000     |     10000000     |
+| --------------------------------------------------------|:---------------|:---------------:|:-------------:|:---------------:|:----------------:|
+|  Vidutinis failo nuskaitymo laikas                      | 5.4 ms (0.0054 sec)|46.2 ms (0.0462 sec)|462 ms (0.462 sec)|4592.6 ms (4.5926 sec) | 48135.2 ms (48.1352 sec)|
+|  Vidutinis duomenu rusiavimo laikas                     |0.4 ms (0.0004 sec)|4.6 ms (0.0046 sec)|127.6 ms (0.1276 sec)|1652.6 ms (1.6526 sec)|21689 ms (21.689 sec) |
+|  Vidutinis duomenu padalijimas i dvi grupes laikas      |0 ms (0 sec)| 9.4 ms (0.0094 sec) |21.6 ms (0.0216 sec)|241.4 ms (0.2414 sec) | 4298 ms (4.298 sec)|
+|  Vidutinis galvociu irasymo i faila laikas              |5 ms (0.005 sec)|24.4 ms (0.0244 sec) |280.6 ms (0.2806 sec)|2543.6 ms (2.5436 sec)|19631.2 ms (19.6312 sec) |
+|  Vidutinis nuskriaustuku irasymo i faila laikas         |0.6 ms (0.0006 sec)|18.2 ms (0.0182 sec)| 176.6 ms (0.1766 sec)|1740.2 ms (1.7402 sec)|16068 ms (16.068 sec) |
+|  *Vidutinis bendras laikas*                             |*11.4 ms (0.0114 sec)*|*93.4 ms (0.0934 sec)*|*1046.8 ms (1.0468 sec)* | *10529 ms (10.529 sec)*  | 105523 ms (105.523 sec)|
+
+List konteinerio greičiai:
+|             failo dydis            | 1000               | 10000               | 100000                | 1000000                  | 10000000                    |
+| --------------------------------------|:-------------------|:-------------------:|:-----------------------:|:-----------------------:|:----------------------------:|
+| Vidutinis failo nuskaitymo laikas| 21.8 ms (0.0218 sec) | 102.8 ms (0.1028 sec) | 980.6 ms (0.9806 sec)  | 9855.6 ms (9.8556 sec) | 106289 ms (106.289 sec) |
+| Vidutinis duomenu rusiavimo laikas     | 0 ms (0 sec)           | 3 ms (0.003 sec)   | 30.8 ms (0.038 sec) | 655.6 ms (0.6556 sec) | 10563.4 ms (10.5634 sec)     |
+| Vidutinis duomenu padalijimas i dvi grupes laikas | 1.4 ms (0.0014 sec) | 16.4 ms (0.0164 sec) | 247.8 ms (0.2478 sec) | 2501.8 ms (2.5018 sec) | 33137.8 ms (33.1378 sec) |
+| Vidutinis galvociu irasymo i faila laikas | 0.8 ms (0.0008 sec) | 29.2 ms (0.0292 sec) | 278.2 ms (0.2782 sec) | 2704.8 ms (2.7048 sec) | 19492.4 ms (19.4924 sec) |
+| Vidutinis nuskriaustuku irasymo i faila laikas | 0.2 ms (0.0002 sec) | 15.8 ms (0.0158 sec) | 179.8 ms (0.1798 sec) | 1613.6 ms (1.6136 sec) | 13990.2 ms (13.9902 sec) |
+| Vidutinis bendras laikas             | 22.8 ms (0.0228 sec)  | 150.8 ms (0.1508 sec) | 1469.4 ms (1.4694 sec) | 14829.6 ms (14.8296 sec) | 150335 ms (150.335 sec)  |
+
+
 ### Sistemos, naudotos testavimui pateiktui žemiau, specifikacijos
 - CPU: AMD Ryzen 7 5800H, 3201 Mhz, 8 Core(s), 16 Logical Processor(s)
 - Installed Physical Memory (RAM):	16.0 GB
