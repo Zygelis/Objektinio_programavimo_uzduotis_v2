@@ -1,7 +1,7 @@
 # objektinio_programavimo_uzduotis
 
 ## Aprašymas
-Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus ir konteinerius.
+Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus ir konteinerius.
 
 ## Kaip naudotis
 
@@ -25,22 +25,22 @@ Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudoja
 ### 4 Strategija
 Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų" su efektyviom funkcijom/algoritmais.
 
-Vector
+## Strategijų greičių skirtumai skirtingų konteinerių atveju
+### Vector
 |                    failo dydis                    |      1000      |      10000      |    100000     |     1000000     |     10000000     |
 | --------------------------------------|:-------------------|:-------------------:|:-----------------------:|:-----------------------:|:----------------------------:|
-| Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija) | 0 ms (0 sec) | 1 ms (0.001 sec) | 17.4 ms (0.0174 sec) | 3 ms (0.003 sec) | 284.667 ms (0.284667 sec) | 2820 ms (2.82 sec) |
-| Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija) | 0 ms (0 sec) | 0.4 ms (0.0004 sec) | 20.6 ms (0.0206 sec) | 11.8 ms (0.0118 sec) | 2721.67 ms (2.72167 sec) | 28414 ms (28.414 sec) |
-| Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija) | 0.2 ms (0.0002 sec) | 0 ms (0 sec) | 13.8 ms (0.0138 sec) | 3 ms (0.003 sec) | 138.333 ms (0.138333 sec) | 1133 ms (1.133 sec) |
-| Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija) | 0 ms (0 sec) | 0 ms (0 sec) | 0.4 ms (0.0004 sec) | 1.6 ms (0.0016 sec) | 272.333 ms (0.272333 sec) | 3472 ms (3.472 sec) |
+| Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija) | 1 ms (0.001 sec) | 3 ms (0.003 sec) | 21.4 ms (0.0214 sec) | 284.667 ms (0.284667 sec) | 2820 ms (2.82 sec) |
+| Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija) | 0.4 ms (0.0004 sec) | 11.8 ms (0.0118 sec) | 194.4 ms (0.1944 sec) | 2721.67 ms (2.72167 sec) | 28414 ms (28.414 sec) |
+| Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija) | 0 ms (0 sec) | 3 ms (0.003 sec) | 12 ms (0.012 sec) | 138.333 ms (0.138333 sec) | 1133 ms (1.133 sec) |
+| Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija) | 0 ms (0 sec) | 1.6 ms (0.0016 sec) | 24.6 ms (0.0246 sec) | 272.333 ms (0.272333 sec) | 3472 ms (3.472 sec) |
 
-
-List
+### List
 |                    failo dydis                    |      1000      |      10000      |    100000     |     1000000     |     10000000     |
 | --------------------------------------|:-------------------|:-------------------:|:-----------------------:|:-----------------------:|:----------------------------:|
 | Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija) | 1.4 ms (0.0014 sec) | 17.4 ms (0.0174 sec) | 180.8 ms (0.1808 sec) | 2095.67 ms (2.09567 sec) | 47733 ms (47.733 sec) |
 | Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija) | 1.8 ms (0.0018 sec) | 20.6 ms (0.0206 sec) | 282.4 ms (0.2824 sec) | 3482 ms (3.482 sec) | 54557 ms (54.557 sec) |
 | Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija) | 0.2 ms (0.0002 sec) | 13.8 ms (0.0138 sec) | 170.4 ms (0.1704 sec) | 1982.67 ms (1.98267 sec) | 100171 ms (100.171 sec) |
-| Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija) | 0 ms (0 sec) | 0.4 ms (0.0004 sec) | 0 ms (0 sec) | 164.667 ms (0.164667 sec) | 12722 ms (12.722 sec) |
+| Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija) | 0 ms (0 sec) | 0.4 ms (0.0004 sec) | 15.2 ms (0.0152 sec) | 164.667 ms (0.164667 sec) | 12722 ms (12.722 sec) |
 
 ## Greičio testai
 
@@ -69,8 +69,6 @@ List konteinerio greičiai:
 - CPU: AMD Ryzen 7 5800H, 3201 Mhz, 8 Core(s), 16 Logical Processor(s)
 - Installed Physical Memory (RAM):	16.0 GB
 - SDD: 512 GB SSD PCIe
-
-### Testavimo rezultatai iš laiko_matavimas.cpp
 
 
 ## Struktūra
@@ -123,3 +121,7 @@ Yra galimybė surūšiuoti mokinius į dvi kategorijas:
 ### Dinaminis Namų Darbų Skaičius:
 - Programa prisitaiko prie situacijų, kai namų darbų užduočių skaičius iš anksto nežinomas.
 - Vartotojai gali nuspręsti, kada baigė įvesti visus namų darbų rezultatus, tiesiog paspaudę Enter arba "baigti", kaip tai yra prašoma.
+
+### 4 Skirtingos rūšiavimo į dvi grupes strategijos:
+- Vartotojas gali pasirinkti viena iš 4 strategijų.
+- Laiko skaičiuoklėjė yra apskaičiuojamas visų strategijų laikas.
