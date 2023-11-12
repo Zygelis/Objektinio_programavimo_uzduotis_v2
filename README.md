@@ -1,7 +1,7 @@
 # objektinio_programavimo_uzduotis
 
 ## Aprašymas
-Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus ir konteinerius.
+Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus ir konteinerius. Pridėtas CMakeLists.txt --> CMake funkcionalumas.
 
 ## Kaip naudotis
 
@@ -125,3 +125,7 @@ Yra galimybė surūšiuoti mokinius į dvi kategorijas:
 ### 4 Skirtingos rūšiavimo į dvi grupes strategijos:
 - Vartotojas gali pasirinkti viena iš 4 strategijų.
 - Laiko skaičiuoklėjė yra apskaičiuojamas visų strategijų laikas.
+
+### Pakeista programos struktūra
+- header failai buvo perkelti į atskirą `headers` folderį
+- pridėta CMakeLists.txt
