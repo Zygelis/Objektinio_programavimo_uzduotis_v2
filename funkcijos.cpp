@@ -154,6 +154,7 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
 
         bendras_laikas_rusiavimo_dvi_4strategija += static_cast<double>(laikas_rusiavimo_dvi_4strategija.count());
 
+
         laikas_pradzia = high_resolution_clock::now();
         string galvociai_pav = "galvociai" + to_string(n_eil) + ".txt";
         issaugojam_duomenis(galvociai, galvociai_pav);

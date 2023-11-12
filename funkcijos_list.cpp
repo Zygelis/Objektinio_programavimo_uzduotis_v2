@@ -56,6 +56,8 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double bendras_laikas_rusiavimo = 0.0;
     double bendras_laikas_rusiavimo_dvi = 0.0;
     double bendras_laikas_rusiavimo_dvi_2strategija = 0.0;
+    double bendras_laikas_rusiavimo_dvi_3strategija = 0.0;
+    double bendras_laikas_rusiavimo_dvi_4strategija = 0.0;
     double bendras_laika_issaugojimo_galvociai = 0.0;
     double bendras_laika_issaugojimo_nuskriaustukai = 0.0;
     
@@ -66,6 +68,13 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     list<studentas_list> galvociai2;
     list<studentas_list> nuskriaustukai;
     list<studentas_list> nuskriaustukai2;
+    list<studentas_list> grupe3;
+    list<studentas_list> galvociai3;
+    list<studentas_list> nuskriaustukai3;
+    list<studentas_list> grupe4;
+    list<studentas_list> galvociai4;
+    list<studentas_list> nuskriaustukai4;
+
 
     char vm = 'm';
     string filename = "Studentai" + to_string(n_eil) + ".txt";
@@ -95,6 +104,7 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
 
         bendras_laikas_rusiavimo += static_cast<double>(laikas_rusiavimo.count());
 
+        // naudojam 1 strategija
         laikas_pradzia = high_resolution_clock::now();
         rusiuojame_i_dvi_grupes_list(grupe, nuskriaustukai, galvociai);
         laikas_pabaiga = high_resolution_clock::now();
@@ -102,7 +112,7 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
 
         bendras_laikas_rusiavimo_dvi += static_cast<double>(laikas_rusiavimo_dvi.count());
 
-        // pasiruosiam 2 strategijai
+        // nauodjam 2 strategija
         laikas_pradzia = high_resolution_clock::now();
         galvociai2 = grupe;
         galvociai2.sort(palyginimas_pagal_rezultata_list);
@@ -113,6 +123,25 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
         auto laikas_rusiavimo_dvi_2strategija = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
 
         bendras_laikas_rusiavimo_dvi_2strategija += static_cast<double>(laikas_rusiavimo_dvi_2strategija.count());
+
+        // nauodjam 3 strategija
+        laikas_pradzia = high_resolution_clock::now();
+        galvociai3 = grupe;
+        rusiuojame_i_dvi_grupes_list_3(galvociai3, nuskriaustukai3);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_rusiavimo_dvi_3strategija = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_rusiavimo_dvi_3strategija += static_cast<double>(laikas_rusiavimo_dvi_3strategija.count());
+        
+
+        // nauodjam 4 strategija
+        grupe4 = grupe;
+        laikas_pradzia = high_resolution_clock::now();
+        rusiuojame_i_dvi_grupes_list_4(grupe4, nuskriaustukai4, galvociai4);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_rusiavimo_dvi_4strategija = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_rusiavimo_dvi_4strategija += static_cast<double>(laikas_rusiavimo_dvi_4strategija.count());
 
 
         laikas_pradzia = high_resolution_clock::now();
@@ -138,6 +167,8 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double vid_bendras_laikas_rusiavimo = bendras_laikas_rusiavimo / static_cast<double>(n);
     double vid_bendras_laikas_rusiavimo_dvi = bendras_laikas_rusiavimo_dvi / static_cast<double>(n);
     double vid_bendras_laikas_rusiavimo_dvi_2strategija = bendras_laikas_rusiavimo_dvi_2strategija / static_cast<double>(n);
+    double vid_bendras_laikas_rusiavimo_dvi_3strategija = bendras_laikas_rusiavimo_dvi_3strategija / static_cast<double>(n);
+    double vid_bendras_laikas_rusiavimo_dvi_4strategija = bendras_laikas_rusiavimo_dvi_4strategija / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_galvociai = bendras_laika_issaugojimo_galvociai / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_nuskriaustukai = bendras_laika_issaugojimo_nuskriaustukai / static_cast<double>(n);
 
@@ -145,6 +176,8 @@ void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas) {
     cout << "Vidutinis duomenu rusiavimo laikas: " << vid_bendras_laikas_rusiavimo << " milliseconds (" << vid_bendras_laikas_rusiavimo / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija): " << vid_bendras_laikas_rusiavimo_dvi << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija): " << vid_bendras_laikas_rusiavimo_dvi_2strategija << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi_2strategija / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija): " << vid_bendras_laikas_rusiavimo_dvi_3strategija << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi_3strategija / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija): " << vid_bendras_laikas_rusiavimo_dvi_4strategija << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi_4strategija / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis galvociu irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_galvociai << " milliseconds (" << vid_bendras_laika_issaugojimo_galvociai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis nuskriaustuku irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_nuskriaustukai << " milliseconds (" << vid_bendras_laika_issaugojimo_nuskriaustukai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis bendras laikas: " << vid_bendras_laikas_ivedimo + vid_bendras_laikas_rusiavimo + vid_bendras_laika_issaugojimo_galvociai + vid_bendras_laika_issaugojimo_nuskriaustukai;
@@ -175,6 +208,26 @@ void rusiuojame_i_dvi_grupes_list_2(list<studentas_list>& grupe, list<studentas_
     if (iteratorius != grupe.end()) {
         nuskriaustukai.splice(nuskriaustukai.begin(), grupe, iteratorius, grupe.end());
     }
+}
+
+
+void rusiuojame_i_dvi_grupes_list_3(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai) {
+    auto partition_point = std::partition(grupe.begin(), grupe.end(),
+        [](const studentas_list& s) {
+            return s.rez >= 5;
+        });
+
+    nuskriaustukai.splice(nuskriaustukai.end(), grupe, partition_point, grupe.end());
+}
+
+
+void rusiuojame_i_dvi_grupes_list_4(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai, std::list<studentas_list>& galvociai) {
+    auto partition_point = std::partition(grupe.begin(), grupe.end(), [](const studentas_list& student) {
+        return student.rez >= 5.0;
+    });
+
+    nuskriaustukai.splice(nuskriaustukai.end(), grupe, grupe.begin(), partition_point);
+    galvociai.splice(galvociai.end(), grupe, partition_point, grupe.end());
 }
 
 
