@@ -19,6 +19,7 @@ void main_vector();
 void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
 void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvočiai);
 void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai);
+void rusiuojame_i_dvi_grupes_3(std::vector<studentas>& grupe, std::vector<studentas>& nuskriaustukai);
 void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
 void duomenu_kurimas(int numLines);
 void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas);
