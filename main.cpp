@@ -7,11 +7,9 @@ int main()
     int konteinerio_pasirinkimas;
     cin >> konteinerio_pasirinkimas;
 
-    while (konteinerio_pasirinkimas != 1 && konteinerio_pasirinkimas != 2) {
-        cout << "Ivestas netinkamas pasirinkimas. Bandykite dar karta: " << endl;
-        cout << "Koki konteineri naudosite? 1 - vector, 2 - list " << endl;
-        cout << "1 - vector, 2 - list " << endl;
-        cin >> konteinerio_pasirinkimas;
+    if (konteinerio_pasirinkimas != 1 && konteinerio_pasirinkimas != 2){
+        cout << "Blogai ivestas pasirinkimas, programa baigia darba" << endl;
+        return 0;
     }
 
     if (konteinerio_pasirinkimas == 1){
