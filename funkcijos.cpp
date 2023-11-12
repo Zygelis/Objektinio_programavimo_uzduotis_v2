@@ -65,13 +65,18 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double bendras_laikas_ivedimo = 0.0;
     double bendras_laikas_rusiavimo = 0.0;
     double bendras_laikas_rusiavimo_dvi = 0.0;
+    double bendras_laikas_rusiavimo_dvi_2strategija = 0.0;
     double bendras_laika_issaugojimo_galvociai = 0.0;
     double bendras_laika_issaugojimo_nuskriaustukai = 0.0;
     
     studentas laikinas;
     vector<studentas> grupe;
+    vector<studentas> grupe2;
     vector<studentas> galvociai;
+    vector<studentas> galvociai2;
     vector<studentas> nuskriaustukai;
+    vector<studentas> nuskriaustukai2;
+
     char vm = 'm';
     string filename = "Studentai" + to_string(n_eil) + ".txt";
 
@@ -109,6 +114,18 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
 
         bendras_laikas_rusiavimo_dvi += static_cast<double>(laikas_rusiavimo_dvi.count());
 
+        // pasiruosiam 2 strategijai
+        laikas_pradzia = high_resolution_clock::now();
+        galvociai2 = grupe;
+        sort(galvociai2.begin(), galvociai2.end(), palyginimas_pagal_rezultata);
+
+        //laikas_pradzia = high_resolution_clock::now();
+        rusiuojame_i_dvi_grupes_2(galvociai2, nuskriaustukai2);
+        laikas_pabaiga = high_resolution_clock::now();
+        auto laikas_rusiavimo_dvi_2strategija = duration_cast<milliseconds>(laikas_pabaiga - laikas_pradzia);
+
+        bendras_laikas_rusiavimo_dvi_2strategija += static_cast<double>(laikas_rusiavimo_dvi_2strategija.count());
+
 
         laikas_pradzia = high_resolution_clock::now();
         string galvociai_pav = "galvociai" + to_string(n_eil) + ".txt";
@@ -133,12 +150,14 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
     double vid_bendras_laikas_ivedimo = bendras_laikas_ivedimo / static_cast<double>(n);
     double vid_bendras_laikas_rusiavimo = bendras_laikas_rusiavimo / static_cast<double>(n);
     double vid_bendras_laikas_rusiavimo_dvi = bendras_laikas_rusiavimo_dvi / static_cast<double>(n);
+    double vid_bendras_laikas_rusiavimo_dvi_2strategija = bendras_laikas_rusiavimo_dvi_2strategija / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_galvociai = bendras_laika_issaugojimo_galvociai / static_cast<double>(n);
     double vid_bendras_laika_issaugojimo_nuskriaustukai = bendras_laika_issaugojimo_nuskriaustukai / static_cast<double>(n);
 
     cout << "Vidutinis failo nuskaitymo laikas: " << vid_bendras_laikas_ivedimo << " milliseconds (" << vid_bendras_laikas_ivedimo / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis duomenu rusiavimo laikas: " << vid_bendras_laikas_rusiavimo << " milliseconds (" << vid_bendras_laikas_rusiavimo / 1000.0 << " seconds)" << endl;
-    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas: " << vid_bendras_laikas_rusiavimo_dvi << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija): " << vid_bendras_laikas_rusiavimo_dvi << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi / 1000.0 << " seconds)" << endl;
+    cout << "Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija): " << vid_bendras_laikas_rusiavimo_dvi_2strategija << " milliseconds (" << vid_bendras_laikas_rusiavimo_dvi_2strategija / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis galvociu irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_galvociai << " milliseconds (" << vid_bendras_laika_issaugojimo_galvociai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis nuskriaustuku irasymo i faila laikas: " << vid_bendras_laika_issaugojimo_nuskriaustukai << " milliseconds (" << vid_bendras_laika_issaugojimo_nuskriaustukai / 1000.0 << " seconds)" << endl;
     cout << "Vidutinis bendras laikas: " << vid_bendras_laikas_ivedimo + vid_bendras_laikas_rusiavimo + vid_bendras_laika_issaugojimo_galvociai + vid_bendras_laika_issaugojimo_nuskriaustukai;
@@ -158,8 +177,25 @@ void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskri
 }
 
 
+void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai) {
+    nuskriaustukai.clear();
+
+    auto iteratorius = grupe.begin();
+    // randam pirmaji studenta su rez < 5
+    while (iteratorius != grupe.end() && iteratorius->rez >= 5.0) {
+        ++iteratorius;
+    }
+
+    // Kai randa pirmaji studenta su rez < 5, kopijuoja visus studentus nuo jo iki galo i nuskriaustukus
+    if (iteratorius != grupe.end()) {
+        nuskriaustukai.assign(iteratorius, grupe.end());
+        grupe.erase(iteratorius, grupe.end());
+    }
+}
+
+
 bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b) {
-    return a.rez < b.rez;
+    return a.rez > b.rez;
 }
 
 
