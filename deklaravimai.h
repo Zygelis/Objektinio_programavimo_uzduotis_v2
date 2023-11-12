@@ -18,6 +18,7 @@ struct studentas_list {
 void main_vector();
 void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
 void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvočiai);
+void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai);
 void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
 void duomenu_kurimas(int numLines);
 void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas);
@@ -34,6 +35,7 @@ studentas atsitiktinis_ivedimas();
 void main_list();
 void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard);
 void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvočiai);
+void rusiuojame_i_dvi_grupes_list_2(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai);
 void issaugojam_duomenis_list(const list<studentas_list>& studentai, const string& file_vard);
 void duomenu_kurimas_list(int n_eiluciu);
 void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas);

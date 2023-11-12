@@ -5,9 +5,13 @@ void main_vector()
 {
     studentas laikinas;
     vector<studentas> grupe;
+    vector<studentas> grupe2;
 
     vector<studentas> galvociai;
+    vector<studentas> galvociai2;
     vector<studentas> nuskriaustukai;
+    vector<studentas> nuskriaustukai2;
+
     char vm_pasirinkimas;
     int rusiavimo_pasirinkimas;
     int n;
@@ -246,13 +250,24 @@ void main_vector()
 
     cout << "Bendru studentu rezultatu irasymas i faila uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
-    // suskirstoma i dvi grupes
+    // suskirstoma i dvi grupes 1 strategija
     start_time = high_resolution_clock::now();
     rusiuojame_i_dvi_grupes(grupe, nuskriaustukai, galvociai);
     end_time = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end_time - start_time);
 
-    cout << "Duomenu padalijimas i dvi grupes uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
+    cout << "1 STRATEGIJA: Duomenu rusiavimas i dvi kategorijas uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
+
+    // suskirstoma i dvi grupes 2 strategija
+    galvociai2 = grupe;
+    sort(galvociai2.begin(), galvociai2.end(), palyginimas_pagal_rezultata);
+    
+    start_time = high_resolution_clock::now();
+    rusiuojame_i_dvi_grupes_2(galvociai2, nuskriaustukai2);
+    end_time = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end_time - start_time);
+
+    cout << "2 STRATEGIJA: Duomenu rusiavimas i dvi kategorijas uztruko: " << duration.count() << " milliseconds (" << duration.count() / 1000.0 << " seconds)" << endl;
 
     // irasom i file galvocius
     start_time = high_resolution_clock::now();
