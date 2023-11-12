@@ -1,5 +1,5 @@
-#include "my_lib.h"
-#include "deklaravimai.h"
+#include "headers/my_lib.h"
+#include "headers/deklaravimai.h"
 
 
 void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard)

@@ -1,5 +1,5 @@
-#include "my_lib.h"
-#include "deklaravimai.h"
+#include "headers/my_lib.h"
+#include "headers/deklaravimai.h"
 
 int main(){
 
@@ -25,19 +25,19 @@ int main(){
     laiko_skaicuokle(10000, 5, rusiavimo_pasirinkimas);
 
     cout << "List" << endl;
-    laiko_skaicuokle_list(100000, 5, rusiavimo_pasirinkimas);
+    laiko_skaicuokle_list(100000, 3, rusiavimo_pasirinkimas);
     cout << "Vector" << endl;
-    laiko_skaicuokle(100000, 5, rusiavimo_pasirinkimas);
+    laiko_skaicuokle(100000, 3, rusiavimo_pasirinkimas);
 
     cout << "List" << endl;
-    laiko_skaicuokle_list(1000000, 5, rusiavimo_pasirinkimas);
+    laiko_skaicuokle_list(1000000, 1, rusiavimo_pasirinkimas);
     cout << "Vector" << endl;
-    laiko_skaicuokle(1000000, 5, rusiavimo_pasirinkimas);
+    laiko_skaicuokle(1000000, 1, rusiavimo_pasirinkimas);
 
-    cout << "List" << endl;
-    laiko_skaicuokle_list(10000000, 5, rusiavimo_pasirinkimas);
-    cout << "Vector" << endl;
-    laiko_skaicuokle(10000000, 5, rusiavimo_pasirinkimas);
+    // cout << "List" << endl;
+    // laiko_skaicuokle_list(10000000, 5, rusiavimo_pasirinkimas);
+    // cout << "Vector" << endl;
+    // laiko_skaicuokle(10000000, 5, rusiavimo_pasirinkimas);
 
     return 0;
 }

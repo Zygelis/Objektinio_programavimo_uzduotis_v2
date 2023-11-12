@@ -1,5 +1,5 @@
-#include "my_lib.h"
-#include "deklaravimai.h"
+#include "headers/my_lib.h"
+#include "headers/deklaravimai.h"
 
 void main_vector()
 {
