@@ -10,6 +10,8 @@ set(SOURCES
     list.cpp
     funkcijos.cpp
     funkcijos_list.cpp
+    ivestis.cpp
+    ivestis_list.cpp
 )
 
 include_directories(headers)

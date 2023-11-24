@@ -17,7 +17,7 @@ struct studentas_list {
 // vector
 void main_vector();
 void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
-void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvočiai);
+void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvociai);
 void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai);
 void rusiuojame_i_dvi_grupes_3(std::vector<studentas>& grupe, std::vector<studentas>& nuskriaustukai);
 void rusiuojame_i_dvi_grupes_4(std::vector<studentas>& students, std::vector<studentas>& nuskriaustukai, std::vector<studentas>& galvociai);
@@ -36,7 +36,7 @@ studentas atsitiktinis_ivedimas();
 // list
 void main_list();
 void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard);
-void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvočiai);
+void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvociai);
 void rusiuojame_i_dvi_grupes_list_2(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai);
 void rusiuojame_i_dvi_grupes_list_3(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai);
 void rusiuojame_i_dvi_grupes_list_4(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai, std::list<studentas_list>& galvociai);

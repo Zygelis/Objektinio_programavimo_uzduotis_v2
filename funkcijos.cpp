@@ -198,10 +198,10 @@ void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas) {
 }
 
 
-void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvočiai) {
+void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvociai) {
     for (const auto& student : grupe) {
         if (student.rez >= 5.0) {
-            galvočiai.push_back(student);
+            galvociai.push_back(student);
         } else {
             nuskriaustukai.push_back(student);
         }
