@@ -1,11 +1,11 @@
 #include "my_lib.h"
 
-struct studentas {
-    string vardas, pavarde;
-    vector <int> paz;
-    int egz;
-    double rez;
-};
+// struct studentas {
+//     string vardas, pavarde;
+//     vector <int> paz;
+//     int egz;
+//     double rez;
+// };
 
 // struct studentas_list {
 //     string vardas, pavarde;
@@ -97,11 +97,9 @@ void rusiuojame_i_dvi_grupes_2_c(vector<Studentas>& grupe, vector<Studentas>& nu
 void rusiuojame_i_dvi_grupes_3_c(std::vector<Studentas>& grupe, std::vector<Studentas>& nuskriaustukai);
 void rusiuojame_i_dvi_grupes_4_c(std::vector<Studentas>& students, std::vector<Studentas>& nuskriaustukai, std::vector<Studentas>& galvociai);
 void issaugojam_duomenis_c(const vector<Studentas>& studentai, const string& file_vard);
-// void duomenu_kurimas(int n_eiluciu);
+void duomenu_kurimas(int n_eiluciu);
 void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas);
-// double medianos_skaiciavimas(vector<int> vec);
-// double galutinio_balo_skaiciavimas(char vm_pasirinkimas, Studentas& laikinas);
-// vector<int> random_skaicius(int n);
+vector<int> random_skaicius(int n);
 bool palyginimas_pagal_rezultata_c(const Studentas& a, const Studentas& b);
 bool palyginimas_pagal_varda_c(const Studentas &a, const Studentas &b);
 bool palyginimas_pagal_pavarde_c(const Studentas &a, const Studentas &b);
@@ -109,23 +107,23 @@ Studentas rankinis_ivedimas_c();
 Studentas atsitiktinis_ivedimas_c();
 
 // vector
-void main_vector();
-void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
-void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvociai);
-void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai);
-void rusiuojame_i_dvi_grupes_3(std::vector<studentas>& grupe, std::vector<studentas>& nuskriaustukai);
-void rusiuojame_i_dvi_grupes_4(std::vector<studentas>& students, std::vector<studentas>& nuskriaustukai, std::vector<studentas>& galvociai);
-void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
-void duomenu_kurimas(int n_eiluciu);
-void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas);
-double medianos_skaiciavimas(vector<int> vec);
-double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas& laikinas);
-vector<int> random_skaicius(int n);
-bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b);
-bool palyginimas_pagal_varda(const studentas &a, const studentas &b);
-bool palyginimas_pagal_pavarde(const studentas &a, const studentas &b);
-studentas rankinis_ivedimas();
-studentas atsitiktinis_ivedimas();
+// void main_vector();
+// void ivedimas_is_file(vector<studentas>& grupe, char vm_pasirinkimas, const string& duom_vard);
+// void rusiuojame_i_dvi_grupes(vector<studentas>& grupe, vector<studentas>& nuskriaustukai, vector<studentas>& galvociai);
+// void rusiuojame_i_dvi_grupes_2(vector<studentas>& grupe, vector<studentas>& nuskriaustukai);
+// void rusiuojame_i_dvi_grupes_3(std::vector<studentas>& grupe, std::vector<studentas>& nuskriaustukai);
+// void rusiuojame_i_dvi_grupes_4(std::vector<studentas>& students, std::vector<studentas>& nuskriaustukai, std::vector<studentas>& galvociai);
+// void issaugojam_duomenis(const vector<studentas>& studentai, const string& file_vard);
+// void duomenu_kurimas(int n_eiluciu);
+// void laiko_skaicuokle(int n_eil, int n, int rusiavimo_pasirinkimas);
+// double medianos_skaiciavimas(vector<int> vec);
+// double galutinio_balo_skaiciavimas(char vm_pasirinkimas, studentas& laikinas);
+// vector<int> random_skaicius(int n);
+// bool palyginimas_pagal_rezultata(const studentas& a, const studentas& b);
+// bool palyginimas_pagal_varda(const studentas &a, const studentas &b);
+// bool palyginimas_pagal_pavarde(const studentas &a, const studentas &b);
+// studentas rankinis_ivedimas();
+// studentas atsitiktinis_ivedimas();
 
 // list
 // void main_list();
