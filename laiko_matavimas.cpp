@@ -14,39 +14,20 @@ int main(){
         cin >> rusiavimo_pasirinkimas;
     }
 
-    // cout << "List" << endl;
-    // laiko_skaicuokle_list(1000, 5, rusiavimo_pasirinkimas);
-    // cout << "Vector" << endl;
-    // laiko_skaicuokle(1000, 5, rusiavimo_pasirinkimas);
-
-    // cout << "List" << endl;
-    // laiko_skaicuokle_list(10000, 5, rusiavimo_pasirinkimas);
-    // cout << "Vector" << endl;
-    // laiko_skaicuokle(10000, 5, rusiavimo_pasirinkimas);
-
-    // cout << "List" << endl;
-    // laiko_skaicuokle_list(100000, 5, rusiavimo_pasirinkimas);
-    // cout << "Vector" << endl;
-    // laiko_skaicuokle(100000, 5, rusiavimo_pasirinkimas);
-
-    // cout << "List" << endl;
-    // laiko_skaicuokle_list(1000000, 5, rusiavimo_pasirinkimas);
-    // cout << "Vector" << endl;
-    // laiko_skaicuokle(1000000, 5, rusiavimo_pasirinkimas);
-
-    // cout << "List" << endl;
-    // laiko_skaicuokle_list(10000000, 5, rusiavimo_pasirinkimas);
-    // cout << "Vector" << endl;
-    // laiko_skaicuokle(10000000, 5, rusiavimo_pasirinkimas);
-    // g++ laiko_matavimas.cpp funkcijos.cpp ivestis.cpp -o laiko_matavimas
-    //./laiko_matavimas
     cout << "Class 1000" << endl;
     laiko_skaicuokle_c(1000, 5, rusiavimo_pasirinkimas);
     cout << "Class 10000" << endl;
     laiko_skaicuokle_c(10000, 5, rusiavimo_pasirinkimas);
-    // laiko_skaicuokle_c(100000, 5, rusiavimo_pasirinkimas);
-    // laiko_skaicuokle_c(1000000, 5, rusiavimo_pasirinkimas);
-    // laiko_skaicuokle_c(10000000, 5, rusiavimo_pasirinkimas);
+    cout << "Class 100000" << endl;
+    laiko_skaicuokle_c(100000, 5, rusiavimo_pasirinkimas);
+    cout << "Class 1000000" << endl;
+    laiko_skaicuokle_c(1000000, 5, rusiavimo_pasirinkimas);
+    cout << "Class 10000000" << endl;
+    laiko_skaicuokle_c(10000000, 5, rusiavimo_pasirinkimas);
 
+    // Paleidimas:
+    // g++ laiko_matavimas.cpp funkcijos.cpp ivestis.cpp -o laiko_matavimas
+    //./laiko_matavimas
+    
     return 0;
 }

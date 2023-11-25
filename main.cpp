@@ -17,6 +17,7 @@ int main()
     }
     else{
         //main_list();
+        cout << "List konteineris siuo metu dar nera realizuotas" << endl;
         return 0;
     }
 }
