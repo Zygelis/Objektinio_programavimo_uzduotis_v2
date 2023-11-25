@@ -16,6 +16,7 @@ int main()
         main_vector();
     }
     else{
-        main_list();
+        //main_list();
+        return 0;
     }
 }
