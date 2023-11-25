@@ -7,12 +7,12 @@ struct studentas {
     double rez;
 };
 
-struct studentas_list {
-    string vardas, pavarde;
-    list <int> paz;
-    int egz;
-    double rez;
-};
+// struct studentas_list {
+//     string vardas, pavarde;
+//     list <int> paz;
+//     int egz;
+//     double rez;
+// };
 
 class Studentas {
 private:
@@ -128,20 +128,20 @@ studentas rankinis_ivedimas();
 studentas atsitiktinis_ivedimas();
 
 // list
-void main_list();
-void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard);
-void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvociai);
-void rusiuojame_i_dvi_grupes_list_2(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai);
-void rusiuojame_i_dvi_grupes_list_3(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai);
-void rusiuojame_i_dvi_grupes_list_4(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai, std::list<studentas_list>& galvociai);
-void issaugojam_duomenis_list(const list<studentas_list>& studentai, const string& file_vard);
-void duomenu_kurimas_list(int n_eiluciu);
-void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas);
-double medianos_skaiciavimas_list(list<int> vektorius);
-double galutinio_balo_skaiciavimas_list(char vm_pasirinkimas, studentas_list& laikinas);
-list<int> random_skaicius_list(int n);
-bool palyginimas_pagal_rezultata_list(const studentas_list& a, const studentas_list& b);
-bool palyginimas_pagal_varda_list(const studentas_list &a, const studentas_list &b);
-bool palyginimas_pagal_pavarde_list(const studentas_list &a, const studentas_list &b);
-studentas_list atsitiktinis_ivedimas_list();
-studentas_list rankinis_ivedimas_list();
+// void main_list();
+// void ivedimas_is_file_list(list<studentas_list> &grupe, char vm_pasirinkimas, const string &duom_vard);
+// void rusiuojame_i_dvi_grupes_list(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai, list<studentas_list>& galvociai);
+// void rusiuojame_i_dvi_grupes_list_2(list<studentas_list>& grupe, list<studentas_list>& nuskriaustukai);
+// void rusiuojame_i_dvi_grupes_list_3(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai);
+// void rusiuojame_i_dvi_grupes_list_4(std::list<studentas_list>& grupe, std::list<studentas_list>& nuskriaustukai, std::list<studentas_list>& galvociai);
+// void issaugojam_duomenis_list(const list<studentas_list>& studentai, const string& file_vard);
+// void duomenu_kurimas_list(int n_eiluciu);
+// void laiko_skaicuokle_list(int n_eil, int n, int rusiavimo_pasirinkimas);
+// double medianos_skaiciavimas_list(list<int> vektorius);
+// double galutinio_balo_skaiciavimas_list(char vm_pasirinkimas, studentas_list& laikinas);
+// list<int> random_skaicius_list(int n);
+// bool palyginimas_pagal_rezultata_list(const studentas_list& a, const studentas_list& b);
+// bool palyginimas_pagal_varda_list(const studentas_list &a, const studentas_list &b);
+// bool palyginimas_pagal_pavarde_list(const studentas_list &a, const studentas_list &b);
+// studentas_list atsitiktinis_ivedimas_list();
+// studentas_list rankinis_ivedimas_list();
