@@ -1,7 +1,7 @@
 # objektinio_programavimo_uzduotis_v2
 
 ## Aprašymas
-- Šioje programoje atliekama tas pats, kaip ir 1.0 versijos programoje, tačiau funkcionalumas realizuotas ne su struktūromis, o su **_klasėmis_**. Kode paliktos funkcijos tik su vektoriaus konteineriu.
+- Šioje programoje atliekama tas pats, kaip ir 1.0 versijos programoje, tačiau funkcionalumas realizuotas ne su struktūromis, o su **_klasėmis_**. Kode paliktos funkcijos tik su vektoriaus konteineriu. Buvo ištrinti visi failai su list funkcijomis, todėl pasikeitė programos CMakeLists.txt.
 - Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus. Pridėtas CMakeLists.txt --> CMake funkcionalumas.
 
 ## Kaip naudotis
