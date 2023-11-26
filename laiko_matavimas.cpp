@@ -27,7 +27,7 @@ int main(){
 
     // Paleidimas:
     // g++ laiko_matavimas.cpp funkcijos.cpp ivestis.cpp -o laiko_matavimas
-    //./laiko_matavimas
-    
+    // ./laiko_matavimas
+
     return 0;
 }

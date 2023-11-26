@@ -56,7 +56,6 @@ void ivedimas_is_file_c(vector<Studentas> &grupe, char vm_pasirinkimas, const st
     duomenys.close();
 }
 
-
 Studentas atsitiktinis_ivedimas_c()
 {
     Studentas laikinas;
@@ -71,7 +70,7 @@ Studentas atsitiktinis_ivedimas_c()
     cin >> kiek_pazymiu;
 
     // Sugeneruojami pazymiai
-    //laikinas.setPaz(random_skaicius(kiek_pazymiu));
+    // laikinas.setPaz(random_skaicius(kiek_pazymiu));
     for (auto &a : random_skaicius(kiek_pazymiu))
     {
         laikinas.setPazs(a);
@@ -89,7 +88,6 @@ Studentas atsitiktinis_ivedimas_c()
 
     return laikinas;
 }
-
 
 Studentas rankinis_ivedimas_c()
 {

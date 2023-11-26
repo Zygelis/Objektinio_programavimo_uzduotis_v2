@@ -1,8 +1,8 @@
 #include "headers/my_lib.h"
 #include "headers/deklaravimai.h"
 
-
-void issaugojam_duomenis_c(const vector<Studentas>& studentai, const string& file_vard) {
+void issaugojam_duomenis_c(const vector<Studentas> &studentai, const string &file_vard)
+{
     ofstream isvesties_file(file_vard);
 
     // antrastine eilute
@@ -10,7 +10,8 @@ void issaugojam_duomenis_c(const vector<Studentas>& studentai, const string& fil
                    << setw(20) << "Rezultatas" << endl;
 
     // irasomi duomenys
-    for (const auto& student : studentai) {
+    for (const auto &student : studentai)
+    {
         isvesties_file << left << setw(20) << student.getVardas()
                        << setw(20) << student.getPavarde()
                        << setw(20) << student.getRez() << endl;
@@ -19,7 +20,8 @@ void issaugojam_duomenis_c(const vector<Studentas>& studentai, const string& fil
     isvesties_file.close();
 }
 
-void duomenu_kurimas(int n_eiluciu) {
+void duomenu_kurimas(int n_eiluciu)
+{
     ofstream isvesties_file("Studentai" + to_string(n_eiluciu) + ".txt");
 
     srand((unsigned)time(NULL));
@@ -27,28 +29,32 @@ void duomenu_kurimas(int n_eiluciu) {
     // antrastine eilute
     isvesties_file << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
 
-    for (int i = 1; i <= 15; i++) {
+    for (int i = 1; i <= 15; i++)
+    {
         isvesties_file << setw(20) << "ND" + to_string(i);
     }
     isvesties_file << setw(20) << "Egz." << endl;
 
     // generuojami duomenys
-    for (int i = 1; i <= n_eiluciu; i++) {
+    for (int i = 1; i <= n_eiluciu; i++)
+    {
         isvesties_file << left << setw(20) << "Vardas" + to_string(i) << setw(20) << "Pavarde" + to_string(i);
 
-        for (int j = 1; j <= 15; j++) {
-            int pazymys = rand() % 10 + 1; 
+        for (int j = 1; j <= 15; j++)
+        {
+            int pazymys = rand() % 10 + 1;
             isvesties_file << setw(20) << pazymys;
         }
 
-        int egzaminas = rand() % 10 + 1; 
+        int egzaminas = rand() % 10 + 1;
         isvesties_file << setw(20) << egzaminas << endl;
     }
 
     isvesties_file.close();
 }
 
-void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas) {
+void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas)
+{
     double bendras_laikas_ivedimo = 0.0;
     double bendras_laikas_rusiavimo = 0.0;
     double bendras_laikas_rusiavimo_dvi = 0.0;
@@ -65,7 +71,8 @@ void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas) {
     char vm = 'm';
     string filename = "Studentai" + to_string(n_eil) + ".txt";
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         grupe.clear();
         galvociai.clear();
         nuskriaustukai.clear();
@@ -78,11 +85,16 @@ void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas) {
         bendras_laikas_ivedimo += static_cast<double>(laikas_ivedimo.count());
 
         laikas_pradzia = high_resolution_clock::now();
-        if (rusiavimo_pasirinkimas == 1) {
+        if (rusiavimo_pasirinkimas == 1)
+        {
             sort(grupe.begin(), grupe.end(), palyginimas_pagal_varda_c);
-        } else if (rusiavimo_pasirinkimas == 2) {
+        }
+        else if (rusiavimo_pasirinkimas == 2)
+        {
             sort(grupe.begin(), grupe.end(), palyginimas_pagal_pavarde_c);
-        } else {
+        }
+        else
+        {
             sort(grupe.begin(), grupe.end(), palyginimas_pagal_rezultata_c);
         }
         laikas_pabaiga = high_resolution_clock::now();
@@ -169,55 +181,64 @@ void laiko_skaicuokle_c(int n_eil, int n, int rusiavimo_pasirinkimas) {
     cout << endl;
 }
 
-
-void rusiuojame_i_dvi_grupes_c(vector<Studentas>& grupe, vector<Studentas>& nuskriaustukai, vector<Studentas>& galvociai) {
-    for (const auto& student : grupe) {
-        if (student.getRez() >= 5.0) {
+void rusiuojame_i_dvi_grupes_c(vector<Studentas> &grupe, vector<Studentas> &nuskriaustukai, vector<Studentas> &galvociai)
+{
+    for (const auto &student : grupe)
+    {
+        if (student.getRez() >= 5.0)
+        {
             galvociai.push_back(student);
-        } else {
+        }
+        else
+        {
             nuskriaustukai.push_back(student);
         }
     }
 }
 
-void rusiuojame_i_dvi_grupes_2_c(vector<Studentas>& grupe, vector<Studentas>& nuskriaustukai) {
+void rusiuojame_i_dvi_grupes_2_c(vector<Studentas> &grupe, vector<Studentas> &nuskriaustukai)
+{
     nuskriaustukai.clear();
 
     auto iteratorius = grupe.begin();
     // randam pirmaji studenta su rez < 5
-    while (iteratorius != grupe.end() && iteratorius->getRez() >= 5.0) {
+    while (iteratorius != grupe.end() && iteratorius->getRez() >= 5.0)
+    {
         ++iteratorius;
     }
 
     // Kai randa pirmaji studenta su rez < 5, kopijuoja visus studentus nuo jo iki galo i nuskriaustukus
-    if (iteratorius != grupe.end()) {
+    if (iteratorius != grupe.end())
+    {
         nuskriaustukai.assign(iteratorius, grupe.end());
         grupe.erase(iteratorius, grupe.end());
     }
 }
 
-void rusiuojame_i_dvi_grupes_3_c(vector<Studentas>& grupe, vector<Studentas>& nuskriaustukai) {
+void rusiuojame_i_dvi_grupes_3_c(vector<Studentas> &grupe, vector<Studentas> &nuskriaustukai)
+{
     auto partition_point = std::partition(grupe.begin(), grupe.end(),
-        [](const Studentas& s) {
-            return s.getRez() >= 5;
-        });
+                                          [](const Studentas &s)
+                                          {
+                                              return s.getRez() >= 5;
+                                          });
 
     nuskriaustukai.insert(nuskriaustukai.end(), std::make_move_iterator(partition_point), std::make_move_iterator(grupe.end()));
     grupe.erase(partition_point, grupe.end());
 }
 
-void rusiuojame_i_dvi_grupes_4_c(vector<Studentas>& grupe, vector<Studentas>& nuskriaustukai, vector<Studentas>& galvociai) {
-    auto partition_point = std::partition(grupe.begin(), grupe.end(), [](const Studentas& student) {
-        return student.getRez() >= 5.0;
-    });
+void rusiuojame_i_dvi_grupes_4_c(vector<Studentas> &grupe, vector<Studentas> &nuskriaustukai, vector<Studentas> &galvociai)
+{
+    auto partition_point = std::partition(grupe.begin(), grupe.end(), [](const Studentas &student)
+                                          { return student.getRez() >= 5.0; });
     // elementai tarp [students.begin(), partition_point) turi rez mazesni uz 5.0
     // elementai tarp [partition_point, students.end()) turi rez didesni arba lygu 5.0
     std::move(grupe.begin(), partition_point, std::back_inserter(nuskriaustukai));
     std::move(partition_point, grupe.end(), std::back_inserter(galvociai));
 }
 
-
-bool palyginimas_pagal_rezultata_c(const Studentas& a, const Studentas& b) {
+bool palyginimas_pagal_rezultata_c(const Studentas &a, const Studentas &b)
+{
     return a.getRez() > b.getRez();
 }
 
@@ -230,7 +251,6 @@ bool palyginimas_pagal_pavarde_c(const Studentas &a, const Studentas &b)
 {
     return a.getPavarde() < b.getPavarde();
 }
-
 
 vector<int> random_skaicius(int n)
 {
