@@ -17,25 +17,25 @@
 
 - "Rule of three" implementavimas
 
-![Alt text](image-1.png)
+![Alt text](images/image-1.png)
 
 - "Rule of three" demonstravimas
 
-![Alt text](image-2.png)
+![Alt text](images/image-2.png)
 
-![Alt text](image-3.png)
+![Alt text](images/image-3.png)
 
 - Įvesties/išvesties operatoriai
 
-![Alt text](image-4.png)
+![Alt text](images/image-4.png)
 
 - Įvesties operatoriaus panaudojimas rankinio ivedimo metu
 
-![Alt text](image.png)
+![Alt text](images/image.png)
 
 - Įvesties/išvesties operatorių demonstravimas
 
-![Alt text](image-5.png)
+![Alt text](images/image-5.png)
 
 
 ## Greičio testai su skirtingais kompiliatoriaus optimizavimo lygio nustatymais:
