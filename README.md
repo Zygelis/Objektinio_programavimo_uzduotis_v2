@@ -3,6 +3,7 @@
 ## Aprašymas
 - Šioje programoje atliekama tas pats, kaip ir 1.0 versijos programoje, tačiau funkcionalumas realizuotas ne su struktūromis, o su **_klasėmis_**. Kode paliktos funkcijos tik su vektoriaus konteineriu. Buvo ištrinti visi failai su list funkcijomis, todėl pasikeitė programos CMakeLists.txt.
 - Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus. Pridėtas CMakeLists.txt --> CMake funkcionalumas.
+- 1.2 versijoje taip pat realizuota "Rule of three" bei įvesties/išvesties operatoriai sukurtai studento klasei. Šio funkcionalumo demonstravimui sukurtas naujas failas `rule_of_three.cpp`.
 
 ## Kaip naudotis
 
@@ -11,6 +12,31 @@
 
 ### Jei norite paleisti greičio matavimo failą laiko_matavimas.cpp:
 - Per terminalą: `g++ laiko_matavimas.cpp funkcijos.cpp ivestis.cpp -o laiko_matavimas` ir `./laiko_matavimas`
+
+## 1.2 versijos realizuoti metodai:
+
+- "Rule of three" implementavimas
+
+![Alt text](image-1.png)
+
+- "Rule of three" demonstravimas
+
+![Alt text](image-2.png)
+
+![Alt text](image-3.png)
+
+- Įvesties/išvesties operatoriai
+
+![Alt text](image-4.png)
+
+- Įvesties operatoriaus panaudojimas rankinio ivedimo metu
+
+![Alt text](image.png)
+
+- Įvesties/išvesties operatorių demonstravimas
+
+![Alt text](image-5.png)
+
 
 ## Greičio testai su skirtingais kompiliatoriaus optimizavimo lygio nustatymais:
 ### Naudojant klasę ir _O1 flag_:
