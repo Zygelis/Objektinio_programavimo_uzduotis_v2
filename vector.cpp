@@ -206,7 +206,7 @@ void main_vector()
             if (pazymiu_pasirinkimas == 1)
             {
                 // ivedama ranka
-                laikinas = rankinis_ivedimas_c();
+                cin >> laikinas;
                 // skaiciuojamas galutinis balas
                 laikinas.calculateRez(vm_pasirinkimas);
                 grupe.push_back(laikinas);
