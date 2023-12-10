@@ -9,10 +9,24 @@ private:
     double rez;
 
 public:
-    // constructor
     Studentas() {}
 
-    // destructor
+    Studentas(const string &v, const string &p, const vector<int> &pzs, int e, double r) : vardas(v), pavarde(p), paz(pzs), egz(e), rez(r) {}
+
+    Studentas(const Studentas &s) : vardas(s.vardas), pavarde(s.pavarde), paz(s.paz), egz(s.egz), rez(s.rez) {} 
+
+    Studentas &operator=(const Studentas &s) 
+    {
+        if (&s == this)
+            return *this;
+        vardas = s.vardas;
+        pavarde = s.pavarde;
+        paz = s.paz;
+        egz = s.egz;
+        rez = s.rez;
+        return *this;
+    }
+
     ~Studentas() {}
 
     // getters and setters
