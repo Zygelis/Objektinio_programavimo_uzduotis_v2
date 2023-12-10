@@ -28,3 +28,5 @@ using std::chrono::duration_cast;
 using std::chrono::high_resolution_clock;
 using std::chrono::milliseconds;
 using std::all_of;
+using std::ostream;
+using std::istream;

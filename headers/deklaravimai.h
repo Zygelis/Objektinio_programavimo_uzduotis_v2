@@ -13,9 +13,9 @@ public:
 
     Studentas(const string &v, const string &p, const vector<int> &pzs, int e, double r) : vardas(v), pavarde(p), paz(pzs), egz(e), rez(r) {}
 
-    Studentas(const Studentas &s) : vardas(s.vardas), pavarde(s.pavarde), paz(s.paz), egz(s.egz), rez(s.rez) {} 
+    Studentas(const Studentas &s) : vardas(s.vardas), pavarde(s.pavarde), paz(s.paz), egz(s.egz), rez(s.rez) {}
 
-    Studentas &operator=(const Studentas &s) 
+    Studentas &operator=(const Studentas &s)
     {
         if (&s == this)
             return *this;
@@ -29,6 +29,55 @@ public:
 
     ~Studentas() {}
 
+    friend ostream &operator<<(ostream &output, const Studentas &s)
+    {
+        output << "Vardas Pavarde: " << s.vardas << " " << s.pavarde;
+        output << " Pazymiai: ";
+        for (int paz : s.paz)
+        {
+            output << paz << " ";
+        }
+
+        output << "Egzaminas: " << s.egz << " " << "Rezultatas: " << s.rez << endl;
+        return output;
+    }
+
+    friend istream &operator>>(istream &input, Studentas &s)
+    {
+        cout << "Iveskite varda: ";
+        input >> s.vardas;
+        cout << "Iveskite pavarde: ";
+        input >> s.pavarde;
+
+        cout << "Iveskite pazymius viena po kito ir paspauskite Enter, kai baigsite. Arba iveskite 'baigti' ir baigsite pazymiu ivedima." << endl;
+        string paz_tikrinimas;
+        cin.ignore();
+        while (true)
+        {
+            getline(cin, paz_tikrinimas);
+
+            if (paz_tikrinimas == "baigti" || paz_tikrinimas.empty())
+            {
+                break;
+            }
+
+            int input = std::stoi(paz_tikrinimas);
+
+            if (input < 0 || input > 10)
+            {
+                cout << "Neteisinga ivestis. Iveskite skaicius nuo 0 iki 10." << endl;
+                continue;
+            }
+            s.setPazs(input);
+        }
+
+        cout << "Enter Egzaminas: ";
+        input >> s.egz;
+        
+        s.calculateRez('m');
+        return input;
+    }
+
     // getters and setters
     string getVardas() const { return vardas; }
     void setVardas(const string &v) { vardas = v; }
@@ -37,10 +86,12 @@ public:
     void setPavarde(const string &p) { pavarde = p; }
 
     vector<int> getPaz() const { return paz; }
+
     // void setPaz(const vector<int>& pzs) {
     //     paz = pzs;
     //     //calculateRez();
     // }
+    
     void setPazs(int p)
     {
         paz.push_back(p);
