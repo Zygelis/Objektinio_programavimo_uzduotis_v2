@@ -1,6 +1,9 @@
 #include "headers/my_lib.h"
 #include "headers/deklaravimai.h"
 
+// paleidimas:
+// g++ main.cpp vector.cpp funkcijos.cpp ivestis.cpp -o main
+
 int main()
 {
     cout << "Koki konteineri naudosite? 1 - vector, 2 - list " << endl;

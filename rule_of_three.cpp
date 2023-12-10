@@ -12,7 +12,7 @@ int main(){
 
     cout << "Rule of three demonstravimas " << endl;
     cout << "Studentas s1: " << endl;
-    Studentas s1("Vardas", "Pavarde", {10, 9, 10}, 10);
+    Studentas s1("Vardas", "Pavarde", {10, 9, 7}, 10);
     cout << s1 << endl;
 
     cout << "Kopijuojamas s1 i s2 ";
