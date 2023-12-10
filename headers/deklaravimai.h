@@ -11,7 +11,8 @@ private:
 public:
     Studentas() {}
 
-    Studentas(const string &v, const string &p, const vector<int> &pzs, int e, double r) : vardas(v), pavarde(p), paz(pzs), egz(e), rez(r) {}
+    Studentas(const string &v, const string &p, const vector<int> &pzs, int e)
+        : vardas(v), pavarde(p), paz(pzs), egz(e), rez(0.0) {calculateRez('m');}
 
     Studentas(const Studentas &s) : vardas(s.vardas), pavarde(s.pavarde), paz(s.paz), egz(s.egz), rez(s.rez) {}
 
