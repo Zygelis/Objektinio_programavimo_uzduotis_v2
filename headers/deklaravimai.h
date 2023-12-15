@@ -10,6 +10,17 @@ public:
     Asmuo(const string &v, const string &p)
         : vardas(v), pavarde(p) {}
 
+    Asmuo(const Asmuo &other)
+        : vardas(other.vardas), pavarde(other.pavarde) {}
+
+    Asmuo &operator=(const Asmuo &other) {
+        if (this != &other) {
+            vardas = other.vardas;
+            pavarde = other.pavarde;
+        }
+        return *this;
+    }
+
     ~Asmuo() {}
 
     // getters and setters
