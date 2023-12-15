@@ -1,7 +1,7 @@
 #include "my_lib.h"
 
 class Asmuo {
-private:
+protected:
     string vardas, pavarde;
 
 public:
@@ -24,7 +24,6 @@ public:
 class Studentas : public Asmuo
 {
 private:
-    string vardas, pavarde;
     vector<int> paz;
     int egz;
     double rez;
@@ -33,16 +32,15 @@ public:
     Studentas() {}
 
     Studentas(const string &v, const string &p, const vector<int> &pzs, int e)
-        : vardas(v), pavarde(p), paz(pzs), egz(e), rez(0.0) {calculateRez('m');}
+        : Asmuo(v,p), paz(pzs), egz(e), rez(0.0) {calculateRez('m');}
 
-    Studentas(const Studentas &s) : vardas(s.vardas), pavarde(s.pavarde), paz(s.paz), egz(s.egz), rez(s.rez) {}
+    Studentas(const Studentas &s) : Asmuo(s), paz(s.paz), egz(s.egz), rez(s.rez) {}
 
     Studentas &operator=(const Studentas &s)
     {
         if (&s == this)
             return *this;
-        vardas = s.vardas;
-        pavarde = s.pavarde;
+        static_cast<Asmuo &>(*this) = s;
         paz = s.paz;
         egz = s.egz;
         rez = s.rez;
@@ -53,7 +51,7 @@ public:
 
     friend ostream &operator<<(ostream &output, const Studentas &s)
     {
-        output << "Vardas Pavarde: " << s.vardas << " " << s.pavarde;
+        output << "Vardas Pavarde: " << s.vardas << " " << s.pavarde << " ";
         output << " Pazymiai: ";
         for (int paz : s.paz)
         {
