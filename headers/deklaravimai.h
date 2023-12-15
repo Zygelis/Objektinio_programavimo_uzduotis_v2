@@ -7,6 +7,8 @@ protected:
 public:
     Asmuo() {}
 
+    virtual void vardas_pavarde() const = 0;
+
     Asmuo(const string &v, const string &p)
         : vardas(v), pavarde(p) {}
 
@@ -21,7 +23,7 @@ public:
         return *this;
     }
 
-    ~Asmuo() {}
+    virtual ~Asmuo() {}
 
     // getters and setters
     string getVardas() const { return vardas; }
@@ -107,6 +109,10 @@ public:
         
         s.calculateRez('m');
         return input;
+    }
+
+    void vardas_pavarde() const override {
+        cout << "Vardas: " << getVardas() << ", Pavarde: " << getPavarde() << endl;
     }
 
     // getters and setters
