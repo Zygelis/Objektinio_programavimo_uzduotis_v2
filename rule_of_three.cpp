@@ -29,5 +29,12 @@ int main(){
     // Paleidimas:
     // g++ rule_of_three.cpp -o rule_of_three
 
+    cout << "Asmens abstrakcios klases demonstravimas " << endl;
+    // Atkomentuoti, jei norite pamatyti klaida
+    //Asmuo pavyzdinis("Vardas", "Pavarde");
+    Studentas pavyzdinis("Vardas", "Pavarde", {10, 9, 7}, 10);
+    pavyzdinis.vardas_pavarde();
+    
+
     return 0;
 }
