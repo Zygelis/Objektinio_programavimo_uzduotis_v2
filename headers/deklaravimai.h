@@ -1,6 +1,27 @@
 #include "my_lib.h"
 
-class Studentas
+class Asmuo {
+private:
+    string vardas, pavarde;
+
+public:
+    Asmuo() {}
+
+    Asmuo(const string &v, const string &p)
+        : vardas(v), pavarde(p) {}
+
+    ~Asmuo() {}
+
+    // getters and setters
+    string getVardas() const { return vardas; }
+    void setVardas(const string &v) { vardas = v; }
+
+    string getPavarde() const { return pavarde; }
+    void setPavarde(const string &p) { pavarde = p; }
+};
+
+
+class Studentas : public Asmuo
 {
 private:
     string vardas, pavarde;
