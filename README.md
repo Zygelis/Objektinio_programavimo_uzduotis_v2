@@ -4,6 +4,7 @@
 - Šioje programoje atliekama tas pats, kaip ir 1.0 versijos programoje, tačiau funkcionalumas realizuotas ne su struktūromis, o su **_klasėmis_**. Kode paliktos funkcijos tik su vektoriaus konteineriu. Buvo ištrinti visi failai su list funkcijomis, todėl pasikeitė programos CMakeLists.txt.
 - Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus. Pridėtas CMakeLists.txt --> CMake funkcionalumas.
 - 1.2 versijoje taip pat realizuota "Rule of three" bei įvesties/išvesties operatoriai sukurtai studento klasei. Šio funkcionalumo demonstravimui sukurtas naujas failas `rule_of_three.cpp`.
+- 1.5 versijoje realizuota abstrakti klasė `Asmuo`. `Stundentas` klasė yra išvestinė (angl. derived) `Asmuo` yra bazinė.
 
 ## Kaip naudotis
 
@@ -12,6 +13,17 @@
 
 ### Jei norite paleisti greičio matavimo failą laiko_matavimas.cpp:
 - Per terminalą: `g++ laiko_matavimas.cpp funkcijos.cpp ivestis.cpp -o laiko_matavimas` ir `./laiko_matavimas`
+
+## 1.5 versijos realizacija:
+
+- Abstrakcios klases `Asmuo` realizacija
+
+![Alt text](images/image-6.png)
+
+- Abstrakcios klases `Asmuo` objektu kurimo klaidos demonstravimas `rule_of_three.cpp` faile
+
+![Alt text](images/image-7.png)
+
 
 ## 1.2 versijos realizuoti metodai:
 
