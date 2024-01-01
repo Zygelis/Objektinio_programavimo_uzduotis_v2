@@ -1,4 +1,6 @@
 #include "my_lib.h"
+#ifndef DEKLARAVIMAI_H
+#define DEKLARAVIMAI_H
 
 class Asmuo {
 protected:
@@ -199,3 +201,6 @@ bool palyginimas_pagal_varda_c(const Studentas &a, const Studentas &b);
 bool palyginimas_pagal_pavarde_c(const Studentas &a, const Studentas &b);
 Studentas rankinis_ivedimas_c();
 Studentas atsitiktinis_ivedimas_c();
+double mediana(vector<int>& values);
+
+#endif
