@@ -5,6 +5,7 @@
 - Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus. Pridėtas CMakeLists.txt --> CMake funkcionalumas.
 - 1.2 versijoje taip pat realizuota "Rule of three" bei įvesties/išvesties operatoriai sukurtai studento klasei. Šio funkcionalumo demonstravimui sukurtas naujas failas `rule_of_three.cpp`.
 - 1.5 versijoje realizuota abstrakti klasė `Asmuo`. `Stundentas` klasė yra išvestinė (angl. derived) `Asmuo` yra bazinė.
+- 2.0 versijoje pridėta Doxygen dokumentacija.
 
 ## Kaip naudotis
 
