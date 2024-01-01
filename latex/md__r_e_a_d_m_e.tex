@@ -1,0 +1,277 @@
+\chapter{objektinio\+\_\+programavimo\+\_\+uzduotis\+\_\+v2}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{objektinio\_programavimo\_uzduotis\_v2@{objektinio\_programavimo\_uzduotis\_v2}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Aprašymas}{Aprašymas}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Šioje programoje atliekama tas pats, kaip ir 1.\+0 versijos programoje, tačiau funkcionalumas realizuotas ne su struktūromis, o su \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+\_\+klasėmis\+\_\+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}. Kode paliktos funkcijos tik su vektoriaus konteineriu. Buvo ištrinti visi failai su list funkcijomis, todėl pasikeitė programos CMake\+Lists.\+txt.
+\item Ši programa sukuria ir apdoroja studentų sąrašus, suskirstydama juos į dvi kategorijas pagal galutinius įvertinimus. Pagrindinės užduotys yra atsitiktinių mokinių duomenų failų generavimas, mokinių rūšiavimas pagal kategoriją, mokinių rūšiavimas į dvi grupes pagal galutinį rezultatą 4 metodais/strategijom ir jų išvedimas į naujus failus. Šių užduočių atlikimas bus matuojamas ir analizuojamas naudojant skirtingo dydžio failus. Pridėtas CMake\+Lists.\+txt -\/-\/\texorpdfstring{$>$}{>} CMake funkcionalumas.
+\item 1.\+2 versijoje taip pat realizuota "{}\+Rule of three"{} bei įvesties/išvesties operatoriai sukurtai studento klasei. Šio funkcionalumo demonstravimui sukurtas naujas failas {\ttfamily \doxylink{rule__of__three_8cpp}{rule\+\_\+of\+\_\+three.\+cpp}}.
+\item 1.\+5 versijoje realizuota abstrakti klasė {\ttfamily Asmuo}. {\ttfamily Stundentas} klasė yra išvestinė (angl. derived) {\ttfamily Asmuo} yra bazinė.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Kaip naudotis}{Kaip naudotis}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Jei norite pasirinkti kiek ir ką testuoti paleiskite main.\+cpp\+:}{Jei norite pasirinkti kiek ir ką testuoti paleiskite main.\+cpp\+:}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Per terminalą {\ttfamily g++ \doxylink{main_8cpp}{main.\+cpp} \doxylink{vector_8cpp}{vector.\+cpp} \doxylink{funkcijos_8cpp}{funkcijos.\+cpp} \doxylink{ivestis_8cpp}{ivestis.\+cpp} -\/o main} ir {\ttfamily ./main}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Jei norite paleisti greičio matavimo failą laiko\+\_\+matavimas.\+cpp\+:}{Jei norite paleisti greičio matavimo failą laiko\+\_\+matavimas.\+cpp\+:}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Per terminalą\+: {\ttfamily g++ \doxylink{laiko__matavimas_8cpp}{laiko\+\_\+matavimas.\+cpp} \doxylink{funkcijos_8cpp}{funkcijos.\+cpp} \doxylink{ivestis_8cpp}{ivestis.\+cpp} -\/o laiko\+\_\+matavimas} ir {\ttfamily ./laiko\+\_\+matavimas}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{1.\+5 versijos realizacija\+:}{1.\+5 versijos realizacija\+:}}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Abstrakcios klases {\ttfamily Asmuo} realizacija
+\end{DoxyItemize}
+
+
+
+
+\begin{DoxyItemize}
+\item Abstrakcios klases {\ttfamily Asmuo} objektu kurimo klaidos demonstravimas {\ttfamily \doxylink{rule__of__three_8cpp}{rule\+\_\+of\+\_\+three.\+cpp}} faile
+\end{DoxyItemize}
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{1.\+2 versijos realizuoti metodai\+:}{1.\+2 versijos realizuoti metodai\+:}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item "{}\+Rule of three"{} implementavimas
+\end{DoxyItemize}
+
+
+
+
+\begin{DoxyItemize}
+\item "{}\+Rule of three"{} demonstravimas
+\end{DoxyItemize}
+
+
+
+
+
+
+\begin{DoxyItemize}
+\item Įvesties/išvesties operatoriai
+\end{DoxyItemize}
+
+
+
+
+\begin{DoxyItemize}
+\item Įvesties operatoriaus panaudojimas rankinio ivedimo metu
+\end{DoxyItemize}
+
+
+
+
+\begin{DoxyItemize}
+\item Įvesties/išvesties operatorių demonstravimas
+\end{DoxyItemize}
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{Greičio testai su skirtingais kompiliatoriaus optimizavimo lygio nustatymais\+:}{Greičio testai su skirtingais kompiliatoriaus optimizavimo lygio nustatymais\+:}}\label{md__r_e_a_d_m_e_autotoc_md7}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{Naudojant klasę ir {\itshape O1 flag}\+:}{Naudojant klasę ir {\itshape O1 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md8}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas   &\PBS\centering 3.\+419 s   &\PBS\centering 31.\+05 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas   &\PBS\centering 0.\+8665 s   &\PBS\centering 10.\+267 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)   &\PBS\centering 0.\+1955 s   &\PBS\centering 2.\+496 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija)   &\PBS\centering 0.\+789 s   &\PBS\centering 9.\+691 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)   &\PBS\centering 0.\+0855 s   &\PBS\centering 1.\+144 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)   &\PBS\centering 0.\+1505 s   &\PBS\centering 3.\+186 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 6.\+913 s   &\PBS\centering 54.\+018 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas   &\PBS\centering 9.\+626 s   &\PBS\centering 78.\+109 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{20.\+8245 s}}   &\PBS\centering {\bfseries{173.\+444 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{Naudojant struktūrą ir {\itshape O1 flag}\+:}{Naudojant struktūrą ir {\itshape O1 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md9}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas   &\PBS\centering 2.\+6705 s   &\PBS\centering 27.\+427 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas   &\PBS\centering 0.\+175 s   &\PBS\centering 2.\+17 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)   &\PBS\centering 0.\+1835 s   &\PBS\centering 2.\+041 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija)   &\PBS\centering 0.\+3465 s   &\PBS\centering 4.\+215 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)   &\PBS\centering 0.\+02 s   &\PBS\centering 0.\+133 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)   &\PBS\centering 0.\+066 s   &\PBS\centering 0.\+576 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 3.\+757 s   &\PBS\centering 38.\+97 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas   &\PBS\centering 2.\+136 s   &\PBS\centering 26.\+885 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{8.\+7385 s}}   &\PBS\centering {\bfseries{95.\+452 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{Naudojant klasę ir {\itshape O2 flag}\+:}{Naudojant klasę ir {\itshape O2 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md10}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas   &\PBS\centering 2.\+779 s   &\PBS\centering 29.\+799 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas   &\PBS\centering 0.\+7825 s   &\PBS\centering 10.\+279 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)   &\PBS\centering 0.\+1935 s   &\PBS\centering 2.\+584 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija)   &\PBS\centering 0.\+7435 s   &\PBS\centering 9.\+314 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)   &\PBS\centering 0.\+0955 s   &\PBS\centering 1.\+238 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)   &\PBS\centering 0.\+1545 s   &\PBS\centering 3.\+509 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 5.\+5755 s   &\PBS\centering 58.\+608 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas   &\PBS\centering 8.\+1015 s   &\PBS\centering 77.\+615 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{17.\+2385 s}}   &\PBS\centering {\bfseries{176.\+301 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{Naudojant struktūrą ir {\itshape O2 flag}\+:}{Naudojant struktūrą ir {\itshape O2 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md11}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas   &\PBS\centering 2.\+669 s   &\PBS\centering 27.\+095 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas   &\PBS\centering 0.\+1965 s   &\PBS\centering 2.\+362 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)   &\PBS\centering 0.\+173 s   &\PBS\centering 1.\+974 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija)   &\PBS\centering 0.\+352 s   &\PBS\centering 4.\+393 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)   &\PBS\centering 0.\+02 s   &\PBS\centering 0.\+139 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)   &\PBS\centering 0.\+0595 s   &\PBS\centering 0.\+537 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 3.\+3055 s   &\PBS\centering 37.\+486 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas   &\PBS\centering 1.\+8335 s   &\PBS\centering 21.\+672 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{8.\+0045 s}}   &\PBS\centering {\bfseries{88.\+615 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{Naudojant klasę ir {\itshape O3 flag}\+:}{Naudojant klasę ir {\itshape O3 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas\+:   &\PBS\centering 2.\+78 s   &\PBS\centering 29.\+645 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas\+:   &\PBS\centering 0.\+741 s   &\PBS\centering 9.\+309 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)\+:   &\PBS\centering 0.\+1785 s   &\PBS\centering 2.\+434 s    \\\cline{1-3}
+idutinis duomenu padalijimas i dvi grupes laikas (2 strategija)\+:   &\PBS\centering 0.\+707 s   &\PBS\centering 8.\+784 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)\+:   &\PBS\centering 0.\+078 s   &\PBS\centering 1.\+102 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)\+:   &\PBS\centering 0.\+1365 s   &\PBS\centering 3.\+262 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 5.\+176 s   &\PBS\centering 52.\+986 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas\+:   &\PBS\centering 6.\+8505 s   &\PBS\centering 71.\+826 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{15.\+5475 s}}   &\PBS\centering {\bfseries{163.\+766 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsection{\texorpdfstring{Naudojant struktūrą ir {\itshape O3 flag}\+:}{Naudojant struktūrą ir {\itshape O3 flag}\+:}}\label{md__r_e_a_d_m_e_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 s   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 s    }\\\cline{1-3}
+\endhead
+Vidutinis failo nuskaitymo laikas   &\PBS\centering 2.\+619 s   &\PBS\centering 26.\+832 s    \\\cline{1-3}
+Vidutinis duomenu rusiavimo laikas   &\PBS\centering 0.\+156 s   &\PBS\centering 1.\+875 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (1 strategija)   &\PBS\centering 0.\+173 s   &\PBS\centering 1.\+945 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (2 strategija)   &\PBS\centering 0.\+3135 s   &\PBS\centering 3.\+88 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (3 strategija)   &\PBS\centering 0.\+0195 s   &\PBS\centering 0.\+148 s    \\\cline{1-3}
+Vidutinis duomenu padalijimas i dvi grupes laikas (4 strategija)   &\PBS\centering 0.\+059 s   &\PBS\centering 0.\+73 s    \\\cline{1-3}
+Vidutinis galvociu irasymo i faila laikas   &\PBS\centering 3.\+1695 s   &\PBS\centering 34.\+162 s    \\\cline{1-3}
+Vidutinis nuskriaustuku irasymo i faila laikas   &\PBS\centering 1.\+764 s   &\PBS\centering 22.\+825 s    \\\cline{1-3}
+{\bfseries{Vidutinis bendras laikas}}   &\PBS\centering {\bfseries{7.\+7085 s}}   &\PBS\centering {\bfseries{85.\+694 s}}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{\texorpdfstring{Greičiausiai programa veikia su struktūra ir O3 optimizavimo lygiu.}{Greičiausiai programa veikia su struktūra ir O3 optimizavimo lygiu.}}\label{md__r_e_a_d_m_e_autotoc_md14}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{Strategijos}{Strategijos}}\label{md__r_e_a_d_m_e_autotoc_md15}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{\texorpdfstring{1 Strategija}{1 Strategija}}\label{md__r_e_a_d_m_e_autotoc_md16}
+Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius\+: "{}vargšiukų"{} ir "{}kietiakų"{} paprastu būdu -\/ be jokių efektyvesnių funkcijų/algoritmų.\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{\texorpdfstring{2 Strategija}{2 Strategija}}\label{md__r_e_a_d_m_e_autotoc_md17}
+Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį "{}vargšiukai"{} paprastu būdu -\/ be jokių efektyvesnių funkcijų/algoritmų.\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{\texorpdfstring{3 Strategija}{3 Strategija}}\label{md__r_e_a_d_m_e_autotoc_md18}
+Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį "{}vargšiukai"{} su efektyviom funkcijom/algoritmais.\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{\texorpdfstring{4 Strategija}{4 Strategija}}\label{md__r_e_a_d_m_e_autotoc_md19}
+Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius\+: "{}vargšiukų"{} ir "{}kietiakų"{} su efektyviom funkcijom/algoritmais.\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{\texorpdfstring{Sistemos, naudotos testavimui pateiktui žemiau, specifikacijos}{Sistemos, naudotos testavimui pateiktui žemiau, specifikacijos}}\label{md__r_e_a_d_m_e_autotoc_md20}
+
+\begin{DoxyItemize}
+\item CPU\+: AMD Ryzen 7 5800H, 3201 Mhz, 8 Core(s), 16 Logical Processor(s)
+\item Installed Physical Memory (RAM)\+: 16.\+0 GB
+\item SDD\+: 512 GB SSD PCIe
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{Struktūra}{Struktūra}}\label{md__r_e_a_d_m_e_autotoc_md21}
+
+\begin{DoxyItemize}
+\item \doxylink{main_8cpp}{main.\+cpp} -\/-\/\texorpdfstring{$>$}{>} pagrindinis file.
+\item \doxylink{vector_8cpp}{vector.\+cpp} -\/-\/\texorpdfstring{$>$}{>} failas vector konteinerio naudojimui.
+\item \doxylink{funkcijos_8cpp}{funkcijos.\+cpp} -\/-\/\texorpdfstring{$>$}{>} vector konteinerio funkcijų file.
+\item \doxylink{ivestis_8cpp}{ivestis.\+cpp} -\/-\/\texorpdfstring{$>$}{>} vector konteinerio įvesties formų funkcijų file.
+\item my\+\_\+lib.\+h -\/-\/\texorpdfstring{$>$}{>} library antraštinis file.
+\item deklaravimai.\+h -\/-\/\texorpdfstring{$>$}{>} deklaravimų antraštinis file.
+\item \doxylink{laiko__matavimas_8cpp}{laiko\+\_\+matavimas.\+cpp} -\/-\/\texorpdfstring{$>$}{>} laiko matavimo programa be rankinio įvedimo funkcionalumo.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysection{\texorpdfstring{Programos savybės}{Programos savybės}}\label{md__r_e_a_d_m_e_autotoc_md22}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{\texorpdfstring{Studentų klasės implementavimas}{Studentų klasės implementavimas}}\label{md__r_e_a_d_m_e_autotoc_md23}
+
+\begin{DoxyItemize}
+\item Ši programa vietoj struktūros (1 uzd.) naudoja klasę.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysubsection{\texorpdfstring{Greičio matavimas\+:}{Greičio matavimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md24}
+
+\begin{DoxyItemize}
+\item Yra galimybė paleisti greičio matavimą, kuris apskaičiuoja ir išveda vector ir list konteinerių veikimo greitį su skirtingo dydžio duomenų failais.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysubsection{\texorpdfstring{Pasirinkto dydžio duomenų failo sugeneravimas\+:}{Pasirinkto dydžio duomenų failo sugeneravimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md25}
+
+\begin{DoxyItemize}
+\item Yra galimybė sugeneruoti pasirinkto dydžio duomenų failą.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{\texorpdfstring{Duomenų apdorojimas\+:}{Duomenų apdorojimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md26}
+Yra galimybė surūšiuoti mokinius į dvi kategorijas\+:
+\begin{DoxyItemize}
+\item Mokiniai, kurių galutinis įvertinimas \texorpdfstring{$<$}{<} 5,0, vadinami "{}nuskriaustukais"{}.
+\item Mokiniai, kurių galutinis įvertinimas \texorpdfstring{$>$}{>}= 5,0, vadinami "{}galvočiais"{}.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysubsection{\texorpdfstring{Laiko matavimas\+:}{Laiko matavimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Išmatuojamas kiekvienos svarbios funkcijos veikimo laikas.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsection{\texorpdfstring{Duomenų Įvedimas iš failo\+:}{Duomenų Įvedimas iš failo\+:}}\label{md__r_e_a_d_m_e_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Yra galimybė įvesti duomenis iš failo.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxysubsection{\texorpdfstring{Atsitiktinio Balų Generavimas\+:}{Atsitiktinio Balų Generavimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md29}
+
+\begin{DoxyItemize}
+\item Vartotojai turi galimybę generuoti atsitiktinius namų darbų ir egzamino rezultatus studentams.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsection{\texorpdfstring{Duomenų Įvedimas Ranka\+:}{Duomenų Įvedimas Ranka\+:}}\label{md__r_e_a_d_m_e_autotoc_md30}
+
+\begin{DoxyItemize}
+\item Vartotojai gali patogiai įvesti studentų duomenis naudodami struktūruotą formatą, įskaitant studento vardą, pavardę, tarpinius namų darbų rezultatus ir egzamino rezultatą.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md31}{}\doxysubsection{\texorpdfstring{Rezultato pateikimas\+:}{Rezultato pateikimas\+:}}\label{md__r_e_a_d_m_e_autotoc_md31}
+
+\begin{DoxyItemize}
+\item Įvedus duomenis, programa apskaičiuoja galutinį baląc ir lentelės formoje rezultatą pateikia ekrane.
+\item Programa studentus gali surūšiuoti pagal vardą, pavardę, rezultatą.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysubsection{\texorpdfstring{Skaičiavimo Galimybės\+:}{Skaičiavimo Galimybės\+:}}\label{md__r_e_a_d_m_e_autotoc_md32}
+
+\begin{DoxyItemize}
+\item Programa palaiko tiek vidurkio, tiek medianos skaičiavimo metodus galutiniam balui apskaičiuoti.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md33}{}\doxysubsection{\texorpdfstring{Dinaminis Namų Darbų Skaičius\+:}{Dinaminis Namų Darbų Skaičius\+:}}\label{md__r_e_a_d_m_e_autotoc_md33}
+
+\begin{DoxyItemize}
+\item Programa prisitaiko prie situacijų, kai namų darbų užduočių skaičius iš anksto nežinomas.
+\item Vartotojai gali nuspręsti, kada baigė įvesti visus namų darbų rezultatus, tiesiog paspaudę Enter arba "{}baigti"{}, kaip tai yra prašoma.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysubsection{\texorpdfstring{4 Skirtingos rūšiavimo į dvi grupes strategijos\+:}{4 Skirtingos rūšiavimo į dvi grupes strategijos\+:}}\label{md__r_e_a_d_m_e_autotoc_md34}
+
+\begin{DoxyItemize}
+\item Vartotojas gali pasirinkti viena iš 4 strategijų.
+\item Laiko skaičiuoklėjė yra apskaičiuojamas visų strategijų laikas.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsection{\texorpdfstring{Pakeista programos struktūra}{Pakeista programos struktūra}}\label{md__r_e_a_d_m_e_autotoc_md35}
+
+\begin{DoxyItemize}
+\item header failai buvo perkelti į atskirą {\ttfamily headers} folderį
+\item pridėta CMake\+Lists.\+txt 
+\end{DoxyItemize}
