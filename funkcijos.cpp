@@ -271,3 +271,19 @@ vector<int> random_skaicius(int n)
     // grazinam vektoriu
     return random_skaiciai;
 }
+
+double mediana(vector<int>& values) {
+    if (values.empty()) {
+        throw std::invalid_argument("Error: Tuscias vektorius.");
+    }
+
+    sort(values.begin(), values.end());
+    size_t size = values.size();
+    size_t middle = size / 2;
+
+    if (size % 2 == 0) {
+        return (values[middle - 1] + values[middle]) / 2.0;
+    } else {
+        return values[middle];
+    }
+}
