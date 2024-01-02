@@ -7,15 +7,15 @@
 - 1.5 versijoje realizuota abstrakti klasė `Asmuo`. `Stundentas` klasė yra išvestinė (angl. derived) `Asmuo` yra bazinė.
 - 2.0 versijoje pridėta Doxygen dokumentacija. Jai sukurtas `html` aplankas ir įkeltas į repoziciją.
 - 2.0 versijoje taip pat pridėtas pavyzdinis **_unittest_** testas. Jis yra sukurtas naujai pridėtai medianos funkcijai.
-- 3.0 versijoje pridėtas installer aplankas su `setup.exe` ir `ProgramInstallSetup.msi`
+- 3.0 versijoje pridėtas `installer` aplankas su `setup.exe` ir `ProgramInstallSetup.msi`
 
 ## Kaip naudotis:
 
 - ## Instaliavimo irankiu
-1. Atsidarome installer aplanka
-2. Atiradome setup.exe failą
+1. Atsidarome `installer` aplanka
+2. Atiradome `setup.exe` failą
 3. Atliekame setup veiksmus
-4. Randame programos shortcut darbalaukyje ir start menu
+4. Randame programos shortcut darbalaukyje ir starto meniu
 
 - ## Leidimas terminale:
 ### Jei norite pasirinkti kiek ir ką testuoti paleiskite main.cpp:
