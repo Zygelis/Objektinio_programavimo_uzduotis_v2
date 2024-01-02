@@ -9,8 +9,15 @@
 - 2.0 versijoje taip pat pridėtas pavyzdinis **_unittest_** testas. Jis yra sukurtas naujai pridėtai medianos funkcijai.
 - 3.0 versijoje pridėtas installer aplankas su `setup.exe` ir `ProgramInstallSetup.msi`
 
-## Kaip naudotis
+## Kaip naudotis:
 
+- ## Instaliavimo irankiu
+1. Atsidarome installer aplanka
+2. Atiradome setup.exe failą
+3. Atliekame setup veiksmus
+4. Randame programos shortcut darbalaukyje ir start menu
+
+- ## Leidimas terminale:
 ### Jei norite pasirinkti kiek ir ką testuoti paleiskite main.cpp:
 - Per terminalą `g++ main.cpp vector.cpp funkcijos.cpp ivestis.cpp -o main` ir `./main`
 
