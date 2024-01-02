@@ -7,7 +7,7 @@
 - 1.5 versijoje realizuota abstrakti klasė `Asmuo`. `Stundentas` klasė yra išvestinė (angl. derived) `Asmuo` yra bazinė.
 - 2.0 versijoje pridėta Doxygen dokumentacija. Jai sukurtas `html` aplankas ir įkeltas į repoziciją.
 - 2.0 versijoje taip pat pridėtas pavyzdinis **_unittest_** testas. Jis yra sukurtas naujai pridėtai medianos funkcijai.
-- 3.0 versijoje pridėtas installer aplankas su setup.exe ir ProgramInstallSetup.msi
+- 3.0 versijoje pridėtas installer aplankas su `setup.exe` ir `ProgramInstallSetup.msi`
 
 ## Kaip naudotis
 
