@@ -17,7 +17,7 @@
 3. Atliekame setup veiksmus
 4. Randame programos shortcut darbalaukyje ir starto meniu
 
-- ## Leidimas terminale:
+- ## Leidimas terminale (papildoma galimybė naudotis laiko_matavimo programa)
 ### Jei norite pasirinkti kiek ir ką testuoti paleiskite main.cpp:
 - Per terminalą `g++ main.cpp vector.cpp funkcijos.cpp ivestis.cpp -o main` ir `./main`
 
